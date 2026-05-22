@@ -34,11 +34,9 @@ export default function TTSV() {
                 className="text-white uppercase text-4xl md:text-6xl leading-none tracking-tighter"
                 style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
               >
-                El viaje que
+                Un viaje
                 <br />
-                <span className="text-[#eec416]">ningún otro</span>
-                <br />
-                hace
+                <span className="text-[#eec416]">único</span>
               </h2>
             </AnimatedSection>
 
@@ -47,8 +45,8 @@ export default function TTSV() {
                 className="text-[#999999] text-lg leading-relaxed"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                Llevamos a un grupo de estudiantes del ITBA directo al corazón
-                del ecosistema emprendedor global: Silicon Valley.
+                Viajamos al corazón del ecosistema emprendedor global: Silicon
+                Valley.
               </p>
               <p
                 className="text-[#999999] leading-relaxed"

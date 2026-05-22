@@ -49,6 +49,17 @@ export const events = [
     featured: false,
     tag: "Hackathon",
   },
+  {
+    id: "visits",
+    name: "TT Visits",
+    shortName: "Visits",
+    description:
+      "Visitamos las oficinas de empresas sponsor a lo largo del año. Un espacio para conocer de adentro cómo trabajan las compañías que están construyendo el futuro.",
+    date: "A lo largo del año",
+    location: "CABA",
+    featured: false,
+    tag: "Visitas a Empresas",
+  },
 ];
 
 export const team = [
@@ -125,11 +136,11 @@ export const marqueeKeywords = [
 ];
 
 export const galleryImages = [
-  { src: "/images/hub/alumnosenelhub.JPG", label: "Hub 2024" },
+  { src: "/images/hub/alumnosenelhub25.JPG", label: "Hub 2025" },
   { src: "/images/hub/XimenaDiaz-Youniversal-TTHUB24.JPG", label: "Hub 2024" },
   { src: "/images/talks/HKazah1.jpg", label: "TT Talks" },
-  { src: "/images/hub/Edusolo.JPG", label: "Hub 2024" },
-  { src: "/images/talks/talk-complif.jpg", label: "TT Talks" },
+  { src: "/images/hub/Edusolohub25.JPG", label: "Hub 2025" },
+  { src: "/images/talks/talk-complif.jpg", label: "TT Visits" },
   { src: "/images/talks/HKazah2.jpg", label: "TT Talks" },
   { src: "/images/talks/talk-nico-varrone.jpg", label: "TT Talks" },
 ];

@@ -6,15 +6,17 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 import { motion } from "framer-motion";
 
 const eventMedia: Record<string, { src: string; alt: string }> = {
-  hub: { src: "/images/hub/alumnosenelhub.JPG", alt: "Tech Trek Hub" },
+  hub: { src: "/images/hub/alumnosenelhub25.JPG", alt: "Tech Trek Hub" },
   talks: { src: "/images/talks/HKazah1.jpg", alt: "TT Talks" },
   biohack: { src: "/images/biohack.png", alt: "BioHackathon" },
+  visits: { src: "/images/talks/talk-complif.jpg", alt: "TT Visits" },
 };
 
 const eventNumbers: Record<string, string> = {
   hub: "01",
   talks: "02",
   biohack: "03",
+  visits: "04",
 };
 
 export default function Events() {
@@ -72,7 +74,7 @@ export default function Events() {
                     {/* Top row */}
                     <div className="flex items-start justify-between mb-6">
                       <span
-                        className="text-[10px] uppercase tracking-[0.25em] text-[#eec416] border border-[#eec416]/30 rounded-full px-3 py-1"
+                        className="text-[10px] uppercase tracking-[0.25em] bg-[#eec416] text-[#0d0d0d] rounded-full px-3 py-1 font-semibold"
                         style={{ fontFamily: "var(--font-inter)" }}
                       >
                         {event.tag}
@@ -88,7 +90,7 @@ export default function Events() {
                     {/* Name + description */}
                     <div className="flex-1">
                       <h3
-                        className="text-white uppercase leading-none tracking-tight mb-4 text-2xl md:text-5xl"
+                        className="text-white uppercase leading-none tracking-tight mb-4 text-2xl md:text-4xl"
                         style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
                       >
                         {event.name}

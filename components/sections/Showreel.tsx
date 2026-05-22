@@ -31,7 +31,7 @@ export default function Showreel() {
               controls
               playsInline
               className="w-full aspect-video"
-              poster="/images/hub/alumnosenelhub.JPG"
+              poster="/images/hub/alumnosenelhub25.JPG"
             >
               <source src="/videos/hub-interviews.mp4" type="video/mp4" />
             </video>
