@@ -15,7 +15,7 @@ export default function About() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => setIsMobile(window.innerWidth < 640);
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -24,7 +24,7 @@ export default function About() {
   return (
     <section id="nosotros" className="py-24 md:py-32 px-6 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-center">
           {/* Left: text */}
           <div>
             <AnimatedSection className="mb-8">
@@ -87,7 +87,7 @@ export default function About() {
           </div>
 
           {/* Right: team grid */}
-          <div>
+          <div className="w-full max-w-xl xl:max-w-none mx-auto xl:mx-0">
             <AnimatedSection delay={0.1} className="mb-6">
               <p className="text-[#555] text-xs uppercase tracking-[0.3em]" style={{ fontFamily: "var(--font-inter)" }}>
                 El equipo
@@ -126,8 +126,8 @@ export default function About() {
                     <div
                       className="relative"
                       style={{ height: COLLAPSED_H }}
-                      onMouseEnter={() => { if (!isMobile) setHovered(i); }}
-                      onMouseLeave={() => { if (!isMobile) setHovered(null); }}
+                      onMouseEnter={() => setHovered(i)}
+                      onMouseLeave={() => setHovered(null)}
                       onClick={() => { if (isMobile) setHovered(hovered === i ? null : i); }}
                     >
                       <motion.div
@@ -161,7 +161,7 @@ export default function About() {
                               <div className="absolute inset-x-0 top-0 p-3 flex gap-2" onClick={e => e.stopPropagation()}>
                                   <a
                                     href={`mailto:${member.email}`}
-                                    className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] active:text-[#eec416]"
+                                    className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] hover:bg-[#2b281a] hover:border-[#eec416]/40 hover:text-[#eec416] active:text-[#eec416] transition-colors duration-200"
                                   >
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                       <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -172,7 +172,7 @@ export default function About() {
                                       href={member.linkedin}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] active:text-[#eec416]"
+                                      className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] hover:bg-[#2b281a] hover:border-[#eec416]/40 hover:text-[#eec416] active:text-[#eec416] transition-colors duration-200"
                                     >
                                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
