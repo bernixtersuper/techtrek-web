@@ -62,7 +62,13 @@ h5 {
 }
 
 .marquee-track-left {
-  animation: marquee-left 30s linear infinite;
+  animation: marquee-left 15s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .marquee-track-left {
+    animation-duration: 6s;
+  }
 }
 
 .marquee-track-right {
