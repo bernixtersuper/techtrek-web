@@ -267,7 +267,15 @@ export default function About() {
                                   </span>
                                 </div>
                               )}
-                              <div className="absolute inset-0 bg-[#0f0f0f]/30" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
+                              <div className="absolute inset-x-0 bottom-0 p-3">
+                                <p className="text-white text-xs leading-tight mb-0.5" style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}>
+                                  {member.name}
+                                </p>
+                                <p className="text-[#eec416]/60 text-[10px] uppercase tracking-wider leading-tight" style={{ fontFamily: "var(--font-inter)" }}>
+                                  {member.role}
+                                </p>
+                              </div>
                             </motion.div>
                           ) : (
                             <motion.div
