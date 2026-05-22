@@ -87,6 +87,13 @@ export default function About() {
               </p>
             </AnimatedSection>
 
+            {/* Preload all hover photos so they're ready on first hover */}
+            <div className="hidden" aria-hidden>
+              {team.map((member, i) => member.photoCompressed && (
+                <Image key={i} src={member.photoCompressed} alt="" width={1} height={1} priority />
+              ))}
+            </div>
+
             <div className="grid grid-cols-2 gap-3">
               {team.map((member, i) => {
                 const isLeft = i % 2 === 0;
@@ -119,7 +126,7 @@ export default function About() {
                           width: cardWidth,
                           borderColor: isHovered ? "rgba(238,196,22,0.4)" : "rgba(31,31,31,1)",
                         }}
-                        transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
                         className="absolute top-0 rounded-xl overflow-hidden bg-[#0f0f0f] border"
                         style={{
                           height: COLLAPSED_H,
