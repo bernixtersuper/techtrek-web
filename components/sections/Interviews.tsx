@@ -59,7 +59,6 @@ export default function Interviews() {
                   height="568"
                   frameBorder="0"
                   scrolling="no"
-                  allowtransparency="true"
                   allow="encrypted-media"
                   className="block"
                 />
