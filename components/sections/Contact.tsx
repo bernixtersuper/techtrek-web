@@ -20,44 +20,39 @@ export default function Contact() {
       id="contacto"
       className="py-24 md:py-32 px-6 bg-[#0d0d0d] border-t border-[#1f1f1f]"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
-          {/* Left */}
-          <div>
-            <AnimatedSection className="mb-4">
-              <p
-                className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                Contacto
-              </p>
-            </AnimatedSection>
+      <div className="max-w-2xl mx-auto text-center">
+        <AnimatedSection className="mb-4">
+          <p
+            className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
+            Contacto
+          </p>
+        </AnimatedSection>
 
-            <AnimatedSection delay={0.1} className="mb-8">
-              <h2
-                className="text-white uppercase text-5xl md:text-6xl leading-none tracking-tighter"
-                style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
-              >
-                Hablemos
-                <br />
-                <span className="text-[#eec416]">juntos</span>
-              </h2>
-            </AnimatedSection>
+        <AnimatedSection delay={0.1} className="mb-8">
+          <h2
+            className="text-white uppercase text-5xl md:text-6xl leading-none tracking-tighter"
+            style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
+          >
+            Hablemos
+            <br />
+            <span className="text-[#eec416]">juntos</span>
+          </h2>
+        </AnimatedSection>
 
-            <AnimatedSection delay={0.2}>
-              <p
-                className="text-[#999999] text-lg leading-relaxed"
-                style={{ fontFamily: "var(--font-inter)" }}
-              >
-                Ya sea que quieras ser sponsor, colaborar en un evento, o
-                simplemente saber mas sobre lo que hacemos — tenes nuestro mail.
-              </p>
-            </AnimatedSection>
-          </div>
+        <AnimatedSection delay={0.2} className="mb-12">
+          <p
+            className="text-[#999999] text-lg leading-relaxed"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
+            Ya sea que quieras ser sponsor, colaborar en un evento, o
+            simplemente saber mas sobre lo que hacemos — tenes nuestro mail.
+          </p>
+        </AnimatedSection>
 
-          {/* Right: contact card */}
-          <AnimatedSection delay={0.2} direction="left">
-            <div className="border border-[#1f1f1f] rounded-2xl p-8 md:p-10 bg-[#0f0f0f]">
+        <AnimatedSection delay={0.3}>
+          <div className="border border-[#1f1f1f] rounded-2xl p-8 md:p-10 bg-[#0f0f0f] text-left">
               {/* Email */}
               <div className="mb-8">
                 <p
@@ -79,7 +74,7 @@ export default function Contact() {
               <div className="border-t border-[#1f1f1f] mb-8" />
 
               {/* Socials */}
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center justify-center gap-4 mb-8">
                 <a
                   href={siteConfig.socials.linkedin}
                   target="_blank"
@@ -108,10 +103,8 @@ export default function Contact() {
               {/* Quick reasons */}
               <div className="mb-8 space-y-3">
                 {[
-                  "Sponsorship del Hub",
-                  "Colaboracion en Talks",
-                  "Propuesta de BioHackathon",
-                  "Consultas generales",
+                  "Empresas y colaboradores: escribinos para sumarse a nuestros eventos",
+                  "Estudiantes: seguinos en redes para estar al tanto de todo",
                 ].map((reason, i) => (
                   <div
                     key={i}
@@ -134,8 +127,7 @@ export default function Contact() {
                 <span>→</span>
               </a>
             </div>
-          </AnimatedSection>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
