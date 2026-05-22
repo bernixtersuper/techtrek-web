@@ -85,7 +85,6 @@ export default function Sponsors() {
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
             techtrek@itba.edu.ar
-            <span className="text-base">→</span>
           </a>
         </AnimatedSection>
       </div>
