@@ -31,7 +31,7 @@ export default function TTSV() {
 
             <AnimatedSection delay={0.1} className="mb-8">
               <h2
-                className="text-white uppercase text-5xl md:text-6xl leading-none tracking-tighter"
+                className="text-white uppercase text-4xl md:text-6xl leading-none tracking-tighter"
                 style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
               >
                 El viaje que

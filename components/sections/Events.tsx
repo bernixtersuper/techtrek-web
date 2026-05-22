@@ -32,7 +32,7 @@ export default function Events() {
         </AnimatedSection>
         <AnimatedSection delay={0.1} className="mb-16">
           <h2
-            className="text-white uppercase text-5xl md:text-7xl leading-none tracking-tighter"
+            className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
             Nuestros
@@ -88,7 +88,7 @@ export default function Events() {
                     {/* Name + description */}
                     <div className="flex-1">
                       <h3
-                        className="text-white uppercase leading-none tracking-tight mb-4 text-4xl md:text-5xl"
+                        className="text-white uppercase leading-none tracking-tight mb-4 text-2xl md:text-5xl"
                         style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
                       >
                         {event.name}

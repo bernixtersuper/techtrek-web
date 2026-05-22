@@ -17,7 +17,7 @@ export default function Interviews() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <AnimatedSection delay={0.1}>
             <h2
-              className="text-white uppercase text-5xl md:text-7xl leading-none tracking-tighter"
+              className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
               style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
             >
               Founders

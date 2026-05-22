@@ -20,7 +20,7 @@ export default function Sponsors() {
 
         <AnimatedSection delay={0.1} className="mb-16 text-center">
           <h2
-            className="text-white uppercase text-5xl md:text-7xl leading-none tracking-tighter"
+            className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
             Sé parte
