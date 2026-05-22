@@ -28,8 +28,19 @@ export const events = [
     tag: "Evento Principal",
   },
   {
+    id: "visits",
+    name: "Tech Trek Visits",
+    shortName: "Visits",
+    description:
+      "Visitamos las oficinas de empresas sponsor a lo largo del año. Un espacio para conocer de adentro cómo trabajan las compañías que están construyendo el futuro.",
+    date: "A lo largo del año",
+    location: "CABA",
+    featured: false,
+    tag: "Visitas a Empresas",
+  },
+  {
     id: "talks",
-    name: "TT Talks",
+    name: "Tech Trek Talks",
     shortName: "Talks",
     description:
       "Charlas íntimas con emprendedores reales. No figuras corporativas — personas con historias concretas para contar.",
@@ -48,17 +59,6 @@ export const events = [
     location: "ITBA, CABA",
     featured: false,
     tag: "Hackathon",
-  },
-  {
-    id: "visits",
-    name: "TT Visits",
-    shortName: "Visits",
-    description:
-      "Visitamos las oficinas de empresas sponsor a lo largo del año. Un espacio para conocer de adentro cómo trabajan las compañías que están construyendo el futuro.",
-    date: "A lo largo del año",
-    location: "CABA",
-    featured: false,
-    tag: "Visitas a Empresas",
   },
 ];
 

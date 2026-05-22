@@ -14,9 +14,9 @@ const eventMedia: Record<string, { src: string; alt: string }> = {
 
 const eventNumbers: Record<string, string> = {
   hub: "01",
-  talks: "02",
-  biohack: "03",
-  visits: "04",
+  visits: "02",
+  talks: "03",
+  biohack: "04",
 };
 
 export default function Events() {
