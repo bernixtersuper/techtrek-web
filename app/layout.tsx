@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "Tech Trek — Emprendedurismo en el ITBA",
   description:
     "Tech Trek acerca el emprendedurismo a los estudiantes del ITBA. Hub, Talks y BioHackathon.",
+  icons: {
+    icon: "/logos/techtrek-logo.png",
+    apple: "/logos/techtrek-logo.png",
+  },
   openGraph: {
     title: "Tech Trek",
     description: "Acercamos el emprendedurismo a los estudiantes del ITBA",
