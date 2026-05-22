@@ -49,14 +49,14 @@ export default function Sponsors() {
             {doubled.map((sponsor, i) => (
               <div
                 key={i}
-                className="shrink-0 mx-12 opacity-70 hover:opacity-100 transition-opacity duration-300"
+                className="shrink-0 mx-6 md:mx-12 opacity-70 hover:opacity-100 transition-opacity duration-300"
               >
                 <Image
                   src={sponsor.src}
                   alt={sponsor.name}
                   width={160}
                   height={60}
-                  style={{ height: "52px", width: "auto" }}
+                  className="h-7 md:h-[52px] w-auto"
                 />
               </div>
             ))}

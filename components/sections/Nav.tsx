@@ -28,7 +28,7 @@ export default function Nav() {
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0d0d0d]/90 backdrop-blur-md border-b border-[#1f1f1f]"
+          ? "backdrop-blur-md bg-gradient-to-r from-[#0d0d0d]/95 via-[#eec416]/[0.06] to-[#0d0d0d]/95"
           : "bg-transparent"
       }`}
     >
@@ -88,6 +88,13 @@ export default function Nav() {
           />
         </button>
       </div>
+
+      {/* Animated bottom border */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-px bg-[#eec416]"
+        animate={{ width: scrolled ? "100%" : "0%" , opacity: scrolled ? 0.35 : 0 }}
+        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+      />
 
       {/* Mobile menu */}
       {menuOpen && (
