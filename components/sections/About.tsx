@@ -60,12 +60,12 @@ export default function About() {
             <AnimatedSection delay={0.2} className="mb-8 space-y-4">
               <p className="text-[#999999] text-lg leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
                 No somos una empresa. No somos una ONG. Somos estudiantes que
-                creen que el ecosistema emprendedor argentino necesita mas
-                conexion con la proxima generacion de fundadores.
+                creen que el ecosistema emprendedor argentino necesita más
+                conexión con la próxima generación de fundadores.
               </p>
               <p className="text-[#999999] text-lg leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
-                Tech Trek nacio en el ITBA para acercar a estudiantes de
-                ingenieria, administracion y carreras afines con emprendedores,
+                Tech Trek nació en el ITBA para acercar a estudiantes de
+                ingeniería, administración y carreras afines con emprendedores,
                 inversores y empresas que estan cambiando las reglas del juego.
               </p>
             </AnimatedSection>
@@ -80,7 +80,7 @@ export default function About() {
                 <Image src="/logos/itba-logo.png" alt="ITBA" width={32} height={32} className="object-contain" />
                 <div>
                   <p className="text-white text-sm font-medium" style={{ fontFamily: "var(--font-inter)", fontWeight: 500 }}>ITBA</p>
-                  <p className="text-[#555] text-xs" style={{ fontFamily: "var(--font-inter)" }}>Instituto Tecnologico de Buenos Aires</p>
+                  <p className="text-[#555] text-xs" style={{ fontFamily: "var(--font-inter)" }}>Instituto Tecnológico de Buenos Aires</p>
                 </div>
               </a>
             </AnimatedSection>

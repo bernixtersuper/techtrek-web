@@ -81,7 +81,7 @@ export default function Hero() {
           className="text-[#999999] text-lg md:text-xl max-w-xl mx-auto mb-12 leading-relaxed"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          Acercamos el emprendedurismo a los estudiantes del ITBA a traves del
+          Acercamos el emprendedurismo a los estudiantes del ITBA a través del
           Hub, Talks y BioHackathon.
         </motion.p>
 

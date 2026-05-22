@@ -47,7 +47,7 @@ export default function Contact() {
             style={{ fontFamily: "var(--font-inter)" }}
           >
             Ya sea que quieras ser sponsor, colaborar en un evento, o
-            simplemente saber mas sobre lo que hacemos — tenes nuestro mail.
+            simplemente saber más sobre lo que hacemos — tenes nuestro mail.
           </p>
         </AnimatedSection>
 
