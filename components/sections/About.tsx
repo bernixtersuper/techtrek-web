@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { team, siteConfig } from "@/data/content";
@@ -9,10 +9,17 @@ const initials = (name: string) =>
   name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
 
 const COLLAPSED_H = 180;
-const EXPANDED_H = 200;
 
 export default function About() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <section id="nosotros" className="py-24 md:py-32 px-6 bg-[#0d0d0d]">
@@ -102,7 +109,9 @@ export default function About() {
                   && Math.floor(hovered / 2) === Math.floor(i / 2)
                   && !isHovered;
 
-                const cardWidth = isHovered
+                const cardWidth = isMobile
+                  ? "100%"
+                  : isHovered
                   ? "calc(150% + 6px)"
                   : isNeighbor
                   ? "50%"
@@ -114,12 +123,12 @@ export default function About() {
 
                 return (
                   <AnimatedSection key={i} delay={0.15 + i * 0.08} direction="left">
-                    {/* Placeholder keeps grid space */}
                     <div
                       className="relative"
                       style={{ height: COLLAPSED_H }}
-                      onMouseEnter={() => setHovered(i)}
-                      onMouseLeave={() => setHovered(null)}
+                      onMouseEnter={() => { if (!isMobile) setHovered(i); }}
+                      onMouseLeave={() => { if (!isMobile) setHovered(null); }}
+                      onClick={() => { if (isMobile) setHovered(hovered === i ? null : i); }}
                     >
                       <motion.div
                         animate={{
@@ -135,7 +144,56 @@ export default function About() {
                         }}
                       >
                         <AnimatePresence mode="wait" initial={false}>
-                          {isHovered ? (
+                          {isHovered ? isMobile ? (
+                            /* Mobile expanded: photo fills card, text overlay at bottom */
+                            <motion.div
+                              key="expanded-mobile"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="relative w-full h-full"
+                            >
+                              {member.photo && (
+                                <Image src={member.photo} alt={member.name} fill className="object-cover" />
+                              )}
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+                              <div className="absolute inset-x-0 bottom-0 p-4">
+                                <p className="text-[#eec416] text-sm leading-tight mb-0.5" style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}>
+                                  {member.name}
+                                </p>
+                                <p className="text-[#eec416]/60 text-xs uppercase tracking-wider mb-1" style={{ fontFamily: "var(--font-inter)" }}>
+                                  {member.role}
+                                </p>
+                                <p className="text-[#888] text-xs leading-snug mb-3" style={{ fontFamily: "var(--font-inter)" }}>
+                                  {member.career}
+                                </p>
+                                <div className="flex items-center gap-3" onClick={e => e.stopPropagation()}>
+                                  <a
+                                    href={`mailto:${member.email}`}
+                                    className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] active:text-[#eec416]"
+                                  >
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                    </svg>
+                                  </a>
+                                  {member.linkedin && (
+                                    <a
+                                      href={member.linkedin}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1a1a1a] border border-[#2a2a2a] text-[#666] active:text-[#eec416]"
+                                    >
+                                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                      </svg>
+                                    </a>
+                                  )}
+                                </div>
+                              </div>
+                            </motion.div>
+                          ) : (
+                            /* Desktop expanded: photo left + text right */
                             <motion.div
                               key="expanded"
                               initial={{ opacity: 0 }}
@@ -145,15 +203,10 @@ export default function About() {
                               className="flex h-full"
                               style={{ height: COLLAPSED_H }}
                             >
-                              {/* Photo — left, square, fade right */}
+                              {/* Photo — left, square */}
                               <div className="relative shrink-0" style={{ width: COLLAPSED_H }}>
                                 {member.photo ? (
-                                  <Image
-                                    src={member.photo}
-                                    alt={member.name}
-                                    fill
-                                    className="object-cover"
-                                  />
+                                  <Image src={member.photo} alt={member.name} fill className="object-cover" />
                                 ) : (
                                   <div className="w-full h-full bg-[#eec416]/10 flex items-center justify-center">
                                     <span className="text-[#eec416] text-2xl" style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}>
@@ -165,36 +218,20 @@ export default function About() {
 
                               {/* Text */}
                               <div className="flex flex-col justify-center px-5 flex-1 min-w-0">
-                                <p
-                                  className="text-[#eec416] leading-tight mb-1"
-                                  style={{ fontFamily: "var(--font-syne)", fontWeight: 600, fontSize: "1rem" }}
-                                >
+                                <p className="text-[#eec416] leading-tight mb-1" style={{ fontFamily: "var(--font-syne)", fontWeight: 600, fontSize: "1rem" }}>
                                   {member.name}
                                 </p>
-                                <p
-                                  className="text-[#eec416]/50 text-xs uppercase tracking-wider mb-1"
-                                  style={{ fontFamily: "var(--font-inter)" }}
-                                >
+                                <p className="text-[#eec416]/50 text-xs uppercase tracking-wider mb-1" style={{ fontFamily: "var(--font-inter)" }}>
                                   {member.role}
                                 </p>
-                                <p
-                                  className="text-[#666] text-xs leading-snug mb-3"
-                                  style={{ fontFamily: "var(--font-inter)" }}
-                                >
+                                <p className="text-[#666] text-xs leading-snug mb-3" style={{ fontFamily: "var(--font-inter)" }}>
                                   {member.career}
                                 </p>
-                                <a
-                                  href={`mailto:${member.email}`}
-                                  className="text-[#555] text-xs hover:text-[#eec416] transition-colors duration-200 truncate mb-2 block"
-                                  style={{ fontFamily: "var(--font-inter)" }}
-                                >
+                                <a href={`mailto:${member.email}`} className="text-[#555] text-xs hover:text-[#eec416] transition-colors duration-200 truncate mb-2 block" style={{ fontFamily: "var(--font-inter)" }}>
                                   {member.email}
                                 </a>
                                 {member.linkedin && (
-                                  <a
-                                    href={member.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer"
                                     className="inline-flex items-center gap-1.5 text-[#555] text-xs hover:text-[#eec416] transition-colors duration-200"
                                     style={{ fontFamily: "var(--font-inter)" }}
                                   >
