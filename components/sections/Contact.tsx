@@ -120,7 +120,7 @@ export default function Contact() {
               {/* CTA */}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex items-center justify-center gap-2 w-full py-4 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-[1.02] active:scale-100"
+                className="btn-gold flex items-center justify-center gap-2 w-full py-4 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-[1.02] active:scale-100"
                 style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
               >
                 Escribirnos

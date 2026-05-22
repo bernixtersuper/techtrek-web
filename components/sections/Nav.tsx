@@ -64,7 +64,7 @@ export default function Nav() {
           ))}
           <a
             href="#sponsors"
-            className="px-5 py-2 bg-[#eec416] text-[#0d0d0d] text-sm font-700 rounded-full hover:bg-[#f5d038] transition-all duration-200 tracking-wide uppercase"
+            className="btn-gold px-5 py-2 bg-[#eec416] text-[#0d0d0d] text-sm font-700 rounded-full hover:bg-[#f5d038] transition-all duration-200 tracking-wide uppercase"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
             Ser Sponsor
@@ -111,7 +111,7 @@ export default function Nav() {
           <a
             href="#sponsors"
             onClick={() => setMenuOpen(false)}
-            className="inline-block w-fit px-6 py-3 bg-[#eec416] text-[#0d0d0d] font-700 rounded-full uppercase tracking-wide"
+            className="btn-gold inline-block w-fit px-6 py-3 bg-[#eec416] text-[#0d0d0d] font-700 rounded-full uppercase tracking-wide"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
             Ser Sponsor

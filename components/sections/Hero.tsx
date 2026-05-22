@@ -94,7 +94,7 @@ export default function Hero() {
         >
           <a
             href="#eventos"
-            className="px-8 py-4 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-105 active:scale-100"
+            className="btn-gold px-8 py-4 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-105 active:scale-100"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
             Ver Eventos
