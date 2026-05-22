@@ -45,6 +45,10 @@ Todo el contenido editable está en `data/content.ts`:
 - **Galería** — array `galleryImages`. Las fotos van en `public/images/`.
 - **Reels de Instagram** — array `instagramReels` con los IDs de cada reel.
 
+## Contribuir
+
+Si sos parte del equipo de Tech Trek o colaborador, los PRs son bienvenidos. Cualquier mejora de diseño, contenido o código es un buen motivo para abrir uno.
+
 ## Contacto
 
 techtrek@itba.edu.ar
