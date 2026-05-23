@@ -39,7 +39,7 @@ public/
 
 Todo el contenido editable está en `data/content.ts`:
 
-- **Equipo** — agregar/editar miembros en el array `team`. Cada miembro acepta `photo` (foto normal) y `photoCompressed` (foto side-eye para el hover del vecino).
+- **Equipo** — agregar/editar miembros en el array `team`. Cada miembro acepta `photo` (foto normal) y `photoCompressed` (foto side-eye para el hover del vecino). Ver [`SIDE-EYE.md`](./SIDE-EYE.md) para el prompt de generacion.
 - **Eventos** — array `events`.
 - **Sponsors** — array `pastSponsors`. Los logos van en `public/logos/sponsors/`.
 - **Galería** — array `galleryImages`. Las fotos van en `public/images/`.
