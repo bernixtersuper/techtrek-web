@@ -75,9 +75,9 @@ export default function About() {
                 href={siteConfig.itbaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 border border-[#1f1f1f] rounded-xl px-5 py-3 bg-[#0f0f0f] hover:border-[#124e74] transition-colors duration-200"
+                className="inline-flex items-center gap-3 border border-[#1f1f1f] rounded-xl px-5 py-3 bg-[#0f0f0f] hover:border-[#124e74] hover:bg-[#124e74]/10 transition-colors duration-200"
               >
-                <Image src="/logos/itba-logo.png" alt="ITBA" width={32} height={32} className="object-contain" />
+                <Image src="/logos/itba-logo.png" alt="ITBA" width={32} height={32} />
                 <div>
                   <p className="text-white text-sm font-medium" style={{ fontFamily: "var(--font-inter)", fontWeight: 500 }}>ITBA</p>
                   <p className="text-[#555] text-xs" style={{ fontFamily: "var(--font-inter)" }}>Instituto Tecnológico de Buenos Aires</p>
@@ -155,7 +155,7 @@ export default function About() {
                               className="relative w-full h-full"
                             >
                               {member.photo && (
-                                <Image src={member.photo} alt={member.name} fill className="object-cover" />
+                                <Image src={member.photo} alt={member.name} fill sizes="50vw" className="object-cover" />
                               )}
                               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent" />
                               <div className="absolute inset-x-0 top-0 p-3 flex gap-2" onClick={e => e.stopPropagation()}>
@@ -203,7 +203,7 @@ export default function About() {
                               {/* Photo — left, square */}
                               <div className="relative shrink-0" style={{ width: COLLAPSED_H }}>
                                 {member.photo ? (
-                                  <Image src={member.photo} alt={member.name} fill className="object-cover" />
+                                  <Image src={member.photo} alt={member.name} fill sizes="180px" className="object-cover" />
                                 ) : (
                                   <div className="w-full h-full bg-[#eec416]/10 flex items-center justify-center">
                                     <span className="text-[#eec416] text-2xl" style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}>
@@ -257,6 +257,7 @@ export default function About() {
                                   src={photoSrc}
                                   alt={member.name}
                                   fill
+                                  sizes="(max-width: 640px) 50vw, 180px"
                                   className="object-cover"
                                 />
                               ) : (

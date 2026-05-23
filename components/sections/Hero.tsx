@@ -33,14 +33,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="inline-flex items-center gap-2 border border-[#1f1f1f] rounded-full px-4 py-2 mb-10 bg-[#111111] hover:border-[#124e74] transition-colors duration-200"
+          className="inline-flex items-center gap-2 border border-[#1f1f1f] rounded-full px-4 py-2 mb-10 bg-[#111111] hover:border-[#124e74] hover:bg-[#124e74]/10 transition-colors duration-200"
         >
           <Image
             src="/logos/itba-logo.png"
             alt="ITBA"
             width={20}
             height={20}
-            className="object-contain"
           />
           <span
             className="text-xs text-[#999999] tracking-widest uppercase"

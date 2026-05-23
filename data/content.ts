@@ -12,7 +12,7 @@ export const siteConfig = {
 
 export const stats = [
   { value: 300, suffix: "+", label: "Asistentes al Hub 2025" },
-  { value: 6, suffix: "", label: "Coordinadores" },
+  { value: 6, suffix: "", label: "Miembros" },
 ];
 
 export const events = [

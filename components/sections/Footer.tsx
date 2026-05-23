@@ -116,7 +116,7 @@ export default function Footer() {
               alt="ITBA"
               width={16}
               height={16}
-              className="object-contain opacity-40 group-hover:opacity-100 transition-opacity duration-200"
+              className="opacity-40 group-hover:opacity-100 transition-opacity duration-200"
             />
             <span
               className="text-[#444] text-xs group-hover:text-[#eec416] transition-colors duration-200"
