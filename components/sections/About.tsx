@@ -143,7 +143,7 @@ export default function About() {
                           zIndex: isHovered ? 20 : 1,
                         }}
                       >
-                        <AnimatePresence mode="wait" initial={false}>
+                        <AnimatePresence mode="sync" initial={false}>
                           {isHovered ? isMobile ? (
                             /* Mobile expanded: photo fills card, text overlay at bottom */
                             <motion.div
