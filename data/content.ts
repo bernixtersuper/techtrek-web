@@ -65,9 +65,9 @@ export const events = [
 export const team = [
   { name: "Tadeo Scardilli", role: "Director", career: "Lic. Gestión de Negocios y Tecnología", email: "tscardilli@itba.edu.ar", photo: "/images/team/tadeo.jpg", photoCompressed: "/images/team/side-eye/tadeo-side-eye1.png", linkedin: "https://www.linkedin.com/in/tadeoscardilli/" },
   { name: "Bernardo Ortiz", role: "Coordinador", career: "Lic. Gestión de Negocios y Tecnología", email: "bortiz@itba.edu.ar", photo: "/images/team/bernardo.jpg", photoCompressed: "/images/team/side-eye/bernardo-side-eye.png", linkedin: "https://www.linkedin.com/in/bernardo-ortiz-perfil/?locale=en-US" },
-  { name: "Tommy Varas", role: "Coordinador", career: "Ingeniería Industrial", email: "tvaras@itba.edu.ar", photo: "/images/team/tommy.jpg", photoCompressed: "/images/team/side-eye/tommy-side-eye.png", linkedin: "https://www.linkedin.com/in/tommyvaras/" },
-  { name: "Olivia Grosso", role: "Coordinador", career: "Bioingeniería", email: "ogrosso@itba.edu.ar", photo: "/images/team/olivia.jpg", photoCompressed: "/images/team/side-eye/olivia-side-eye.png", linkedin: "https://www.linkedin.com/in/olivia-grosso/" },
   { name: "Victoria Escobar", role: "Coordinador", career: "Bioingeniería", email: "vescobar@itba.edu.ar", photo: "/images/team/victoria1.jpg", photoCompressed: "/images/team/side-eye/victoria-side-eye1.png", linkedin: "https://www.linkedin.com/in/victoriaescobar123/" },
+  { name: "Olivia Grosso", role: "Coordinador", career: "Bioingeniería", email: "ogrosso@itba.edu.ar", photo: "/images/team/olivia.jpg", photoCompressed: "/images/team/side-eye/olivia-side-eye.png", linkedin: "https://www.linkedin.com/in/olivia-grosso/" },
+  { name: "Tommy Varas", role: "Coordinador", career: "Ingeniería Industrial", email: "tvaras@itba.edu.ar", photo: "/images/team/tommy.jpg", photoCompressed: "/images/team/side-eye/tommy-side-eye.png", linkedin: "https://www.linkedin.com/in/tommyvaras/" },
   { name: "Francisco Galan", role: "Coordinador", career: "Lic. Gestión de Negocios y Tecnología", email: "fragalan@itba.edu.ar", photo: "/images/team/fran1.png", photoCompressed: "/images/team/side-eye/fran_side-eye1.jpg", linkedin: "https://www.linkedin.com/in/franciscoogalan/" },
 ];
 
