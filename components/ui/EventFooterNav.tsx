@@ -24,10 +24,16 @@ const allEvents = [
     shortName: "Talks",
     tag: "Serie de Charlas",
   },
+  {
+    href: "/events/ttsv",
+    name: "TT SV",
+    shortName: "TTSV",
+    tag: "Viaje a Silicon Valley",
+  },
 ];
 
 interface EventFooterNavProps {
-  current: "hub" | "visits" | "talks";
+  current: "hub" | "visits" | "talks" | "ttsv";
 }
 
 export default function EventFooterNav({ current }: EventFooterNavProps) {
@@ -45,15 +51,15 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
         </p>
       </AnimatedSection>
 
-      <div className={`grid gap-3 ${others.length === 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 max-w-md"}`}>
+      <div className={`grid gap-3 ${others.length >= 3 ? "grid-cols-1 md:grid-cols-3" : others.length === 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 max-w-md"}`}>
         {others.map((event, i) => (
-          <AnimatedSection key={event.href} delay={i * 0.1}>
-            <Link href={event.href}>
+          <AnimatedSection key={event.href} delay={i * 0.1} className="h-full">
+            <Link href={event.href} className="block h-full">
               <motion.div
                 whileHover={{ y: -3, borderColor: "rgba(238,196,22,0.4)" }}
                 transition={{ duration: 0.25 }}
                 style={{ borderColor: "rgba(31,31,31,1)" }}
-                className="border rounded-2xl p-8 md:p-10 group cursor-pointer flex items-end justify-between min-h-[140px]"
+                className="border rounded-2xl p-8 md:p-10 group cursor-pointer flex items-start justify-between h-full min-h-[140px]"
               >
                 <div>
                   <p
@@ -67,12 +73,12 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
                     style={{
                       fontFamily: "var(--font-syne)",
                       fontWeight: 800,
-                      fontSize: "clamp(1.8rem, 4vw, 3rem)",
+                      fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
                     }}
                   >
-                    {event.name.split(" ").slice(0, -1).join(" ")}{" "}
+                    {event.name.split(" ")[0]}{" "}
                     <span className="text-[#eec416]">
-                      {event.name.split(" ").at(-1)}
+                      {event.name.split(" ").slice(1).join(" ")}
                     </span>
                   </h3>
                 </div>

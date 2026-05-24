@@ -153,6 +153,12 @@ export interface EventImage {
   alt: string;
 }
 
+export interface TeamMember {
+  name: string;
+  role: string;
+  email: string;
+}
+
 export interface VisitEdition {
   id: string;
   company: string;
@@ -221,6 +227,7 @@ export interface HubEdition {
   location: string;
   description: string;
   images: EventImage[];
+  team: TeamMember[];
 }
 
 export const hubPage = {
@@ -240,6 +247,14 @@ export const hubPage = {
         { src: "/images/hub/ProductoSponsorHub25vert.JPG", alt: "Hub 2025" },
         { src: "/images/hub/hubpreparacion.JPG", alt: "Hub 2025" },
       ],
+      team: [
+        { name: "Santiago Moreno",       role: "Director",    email: "samoreno@itba.edu.ar" },
+        { name: "Eduardo Tormakh",       role: "Director",    email: "etormakh@itba.edu.ar" },
+        { name: "Tadeo Scardilli",       role: "Coordinador", email: "tscardilli@itba.edu.ar" },
+        { name: "Tomas Puiggari Medici", role: "Coordinador", email: "tpuiggarimedici@itba.edu.ar" },
+        { name: "Maria Eugenia Arrinda", role: "Coordinador", email: "marrinda@itba.edu.ar" },
+        { name: "Eloisa Aleman Monch",   role: "Coordinador", email: "ealemanmonch@itba.edu.ar" },
+      ],
     },
     {
       year: "2024",
@@ -255,9 +270,59 @@ export const hubPage = {
         { src: "/images/hub/hub24-speaker2.JPG", alt: "Hub 2024" },
         { src: "/images/hub/hub24-ximena-bags.JPG", alt: "Hub 2024" },
       ],
+      team: [
+        { name: "Martín Hecht",       role: "Director",    email: "mhecht@itba.edu.ar" },
+        { name: "María Luján Lladó",  role: "Director",    email: "mallado@itba.edu.ar" },
+        { name: "Santiago Allende",   role: "Coordinador", email: "sallende@itba.edu.ar" },
+        { name: "Santiago Moreno",    role: "Coordinador", email: "samoreno@itba.edu.ar" },
+        { name: "Eduardo Tormakh",    role: "Coordinador", email: "etormakh@itba.edu.ar" },
+        { name: "Paloma Tralma",      role: "Coordinador", email: "ptralma@itba.edu.ar" },
+      ],
     },
   ] as HubEdition[],
 };
+
+export interface TTSVEdition {
+  year: string;
+  dates: string;
+  location: string;
+  paragraphs: string[];
+  teamMembers: TeamMember[];
+  coverImage: string;
+  images: EventImage[];
+}
+
+// Ordered most recent first
+export const ttsvEditions: TTSVEdition[] = [
+  {
+    year: "2025",
+    dates: "23 enero – 4 febrero, 2025",
+    location: "San Francisco, California",
+    paragraphs: [
+      "Del 23 de enero al 4 de febrero viajamos a San Francisco para aprender del ecosistema emprendedor. Los primeros días vivimos en una casa en Silicon Valley junto a ingenieros de la NASA, personas que trabajan en autos voladores y emprendedores desarrollando sus propios proyectos. Cada cena era, literalmente, una clase universitaria.",
+      "Visitamos Apple, Intel, Matternet, Tesla, Stanford, Google, Amazon, LinkedIn, GitHub, Vercel y Founders Inc., entre muchos otros. Organizamos un panel en Varian junto al Consulado General de Argentina en Los Angeles y un happy hour con graduados del ITBA en Mountain View.",
+      "Lo mejor fue conocer personas unidas por la misma mentalidad: pensar en grande y no conformarse con poco. Recorrer Silicon Valley con amigos te cambia la forma de ver el mundo.",
+    ],
+    teamMembers: [
+      { name: "Santiago Moreno",      role: "Director",    email: "samoreno@itba.edu.ar" },
+      { name: "Eduardo Tormakh",      role: "Director",    email: "etormakh@itba.edu.ar" },
+      { name: "Tadeo Scardilli",      role: "Coordinador", email: "tscardilli@itba.edu.ar" },
+      { name: "Tomas Puiggari Medici",role: "Coordinador", email: "tpuiggarimedici@itba.edu.ar" },
+      { name: "Maria Eugenia Arrinda",role: "Coordinador", email: "marrinda@itba.edu.ar" },
+      { name: "Eloisa Aleman Monch",  role: "Coordinador", email: "ealemanmonch@itba.edu.ar" },
+    ],
+    coverImage: "/images/ttsv25.png",
+    images: [
+      { src: "/images/ttsv/team.jpg",       alt: "Equipo Tech Trek Silicon Valley 2025" },
+      { src: "/images/ttsv/linkedin.jpg",   alt: "Visita a LinkedIn" },
+      { src: "/images/ttsv/happyrobot.jpg", alt: "HappyRobot con Marcos Diehl" },
+      { src: "/images/ttsv/vercel.jpg",     alt: "Visita a Vercel" },
+      { src: "/images/ttsv/team2.jpg",      alt: "Tech Trek Silicon Valley 2025" },
+      { src: "/images/ttsv/team3.jpg",      alt: "Tech Trek Silicon Valley 2025" },
+      { src: "/images/ttsv/team4.jpg",      alt: "Tech Trek Silicon Valley 2025" },
+    ],
+  },
+];
 
 // Ordered most recent first
 export const talkEditions: TalkEdition[] = [

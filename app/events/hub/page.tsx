@@ -5,6 +5,7 @@ import EventNav from "@/components/sections/EventNav";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { hubPage } from "@/data/content";
 import EventFooterNav from "@/components/ui/EventFooterNav";
+import TeamAccordion from "@/components/ui/TeamAccordion";
 
 export const metadata: Metadata = {
   title: "Tech Trek Hub — Tech Trek",
@@ -141,7 +142,7 @@ export default function HubPage() {
                 </p>
               </AnimatedSection>
 
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 mb-12">
                 {edition.images.map((img, j) => (
                   <AnimatedSection key={j} delay={j * 0.06} direction="up">
                     <div className="relative aspect-[4/3] overflow-hidden rounded-xl group">
@@ -157,6 +158,8 @@ export default function HubPage() {
                   </AnimatedSection>
                 ))}
               </div>
+
+              <TeamAccordion year={edition.year} team={edition.team} />
             </div>
           </article>
         ))}
