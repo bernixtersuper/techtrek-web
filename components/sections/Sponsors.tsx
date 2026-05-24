@@ -1,8 +1,6 @@
-import Image from "next/image";
 import { pastSponsors } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-
-const doubled = [...pastSponsors, ...pastSponsors];
+import SponsorMarquee from "@/components/ui/SponsorMarquee";
 
 export default function Sponsors() {
   return (
@@ -38,30 +36,7 @@ export default function Sponsors() {
         >
           Confiaron en nosotros
         </p>
-        <div
-          className="overflow-hidden bg-[#eec416]/10 py-6"
-          style={{
-            maskImage: "linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent, black 30%, black 70%, transparent)",
-          }}
-        >
-          <div className="flex items-center marquee-track-left">
-            {doubled.map((sponsor, i) => (
-              <div
-                key={i}
-                className="shrink-0 mx-6 md:mx-12 opacity-70 hover:opacity-100 transition-opacity duration-300"
-              >
-                <Image
-                  src={sponsor.src}
-                  alt={sponsor.name}
-                  width={160}
-                  height={60}
-                  className="h-7 md:h-[52px] w-auto"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <SponsorMarquee sponsors={pastSponsors} />
       </AnimatedSection>
 
       {/* CTA */}

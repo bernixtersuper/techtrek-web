@@ -114,8 +114,8 @@ export default function Footer() {
             <Image
               src="/logos/itba-logo.png"
               alt="ITBA"
-              width={16}
-              height={16}
+              width={28}
+              height={28}
               className="opacity-40 group-hover:opacity-100 transition-opacity duration-200"
             />
             <span

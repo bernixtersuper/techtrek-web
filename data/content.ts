@@ -110,8 +110,8 @@ export const pastSponsors = [
   { name: "PedidosYa", src: "/logos/sponsors/png-transparent-pedidosya-hd-logo-removebg-preview.png" },
   { name: "Embajada USA", src: "/logos/sponsors/embassyusa.png" },
   { name: "Rohde & Schwarz", src: "/logos/sponsors/Rohde&shwarz.png.png" },
-  { name: "SF500", src: "/logos/sponsors/SF500.png" },
-  { name: "PdI", src: "/logos/sponsors/PdI logo gris.png" },
+  { name: "SF500", src: "/logos/sponsors/SF500white.png" },
+  { name: "PdI", src: "/logos/sponsors/PdI-logo-blanco.png" },
 ];
 
 export const instagramReels = [
