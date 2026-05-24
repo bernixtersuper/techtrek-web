@@ -36,7 +36,7 @@ export default function Nav() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
           <Image
-            src="/logos/techtrek-logo.png"
+            src="/logos/techtrek-logo-full.png"
             alt="Tech Trek"
             width={40}
             height={40}

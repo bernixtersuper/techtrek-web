@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <a href="#" className="flex items-center gap-3">
               <Image
-                src="/logos/techtrek-logo.png"
+                src="/logos/techtrek-logo-full.png"
                 alt="Tech Trek"
                 width={36}
                 height={36}
