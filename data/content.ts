@@ -254,6 +254,7 @@ export const hubPage = {
         { name: "Tomas Puiggari Medici", role: "Coordinador", email: "tpuiggarimedici@itba.edu.ar" },
         { name: "Maria Eugenia Arrinda", role: "Coordinador", email: "marrinda@itba.edu.ar" },
         { name: "Eloisa Aleman Monch",   role: "Coordinador", email: "ealemanmonch@itba.edu.ar" },
+        { name: "Julian Guerrero",       role: "Coordinador", email: "jguerrero@itba.edu.ar" },
       ],
     },
     {
@@ -299,8 +300,8 @@ export const ttsvEditions: TTSVEdition[] = [
     dates: "23 enero – 4 febrero, 2025",
     location: "San Francisco, California",
     paragraphs: [
-      "Del 23 de enero al 4 de febrero viajamos a San Francisco para aprender del ecosistema emprendedor. Los primeros días vivimos en una casa en Silicon Valley junto a ingenieros de la NASA, personas que trabajan en autos voladores y emprendedores desarrollando sus propios proyectos. Cada cena era, literalmente, una clase universitaria.",
-      "Visitamos Apple, Intel, Matternet, Tesla, Stanford, Google, Amazon, LinkedIn, GitHub, Vercel y Founders Inc., entre muchos otros. Organizamos un panel en Varian junto al Consulado General de Argentina en Los Angeles y un happy hour con graduados del ITBA en Mountain View.",
+      "Del 23 de enero al 4 de febrero viajamos a San Francisco para aprender del ecosistema emprendedor. Los primeros días vivimos en una casa en Silicon Valley junto a ingenieros de la NASA, NVIDIA y emprendedores desarrollando sus propios proyectos. Cada cena era una clase universitaria.",
+      "Visitamos Apple, Intel, NVIDIA, Matternet, Tesla, Stanford, Google, Amazon, LinkedIn, GitHub, Vercel y Founders Inc., entre muchos otros. Organizamos un panel en Varian junto al Consulado General de Argentina en Los Angeles y un happy hour con graduados del ITBA en Mountain View.",
       "Lo mejor fue conocer personas unidas por la misma mentalidad: pensar en grande y no conformarse con poco. Recorrer Silicon Valley con amigos te cambia la forma de ver el mundo.",
     ],
     teamMembers: [
@@ -310,6 +311,7 @@ export const ttsvEditions: TTSVEdition[] = [
       { name: "Tomas Puiggari Medici",role: "Coordinador", email: "tpuiggarimedici@itba.edu.ar" },
       { name: "Maria Eugenia Arrinda",role: "Coordinador", email: "marrinda@itba.edu.ar" },
       { name: "Eloisa Aleman Monch",  role: "Coordinador", email: "ealemanmonch@itba.edu.ar" },
+      { name: "Julian Guerrero",      role: "Coordinador", email: "jguerrero@itba.edu.ar" },
     ],
     coverImage: "/images/ttsv25.png",
     images: [

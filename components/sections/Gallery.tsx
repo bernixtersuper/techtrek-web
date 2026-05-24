@@ -73,6 +73,7 @@ export default function Gallery() {
                       sizes="(max-width: 768px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-[#eec416]/0 group-hover:bg-[#eec416]/[0.08] transition-colors duration-500" />
                     <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
                       <span
                         className="text-white/60 text-xs uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300"
