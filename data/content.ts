@@ -135,15 +135,17 @@ export const marqueeKeywords = [
   "Comunidad",
 ];
 
+// Order matches fixed bento layout in Gallery.tsx:
+// [wide][tall] / [sq][sq][tall] / [tall][wide] / [tall][sq][sq]
 export const galleryImages = [
-  { src: "/images/hub/alumnosenelhub25.JPG", label: "Hub 2025" },
-  { src: "/images/talks/hernankazah1.jpg", label: "TT Talks" },
-  { src: "/images/hub/XimenaDiaz-Youniversal-TTHUB24.JPG", label: "Hub 2024" },
-  { src: "/images/hub/ProductoSponsorHub25vert.JPG", label: "Hub 2025" },
-  { src: "/images/talks/talk-complif.jpg", label: "TT Visits" },
-  { src: "/images/talks/hernankazah2.jpg", label: "TT Talks" },
-  { src: "/images/hub/Edusolohub25.JPG", label: "Hub 2025" },
-  { src: "/images/talks/talk-nico-varrone.jpg", label: "TT Talks" },
+  { src: "/images/talks/hernankazah1.jpg",                  label: "Hernán Kazah",  href: "/events/talks#hernan-kazah" },// 2 sq
+  { src: "/images/hub/alumnosenelhub25.JPG",                label: "Hub 2025",      href: "/events/hub#hub-2025" },      // 0 wide
+  { src: "/images/hub/ProductoSponsorHub25vert.JPG",        label: "Hub 2025",      href: "/events/hub#hub-2025" },      // 1 tall
+  { src: "/images/hub/XimenaDiaz-Youniversal-TTHUB24.JPG", label: "Hub 2024",      href: "/events/hub#hub-2024" },      // 3 sq
+  { src: "/images/hub/Edusolohub25.JPG",                    label: "Hub 2025",      href: "/events/hub#hub-2025" },      // 6 sq
+  { src: "/images/talks/talk-complif.jpg",                  label: "Complif",       href: "/events/visits#complif" },    // 5 wide
+  { src: "/images/talks/hernankazah2.jpg",                  label: "Hernán Kazah",  href: "/events/talks#hernan-kazah" },// 4 tall
+  { src: "/images/talks/talk-nico-varrone.jpg",             label: "Nico Varrone",  href: "/events/talks#nico-varrone" },// 7 sq
 ];
 
 export interface EventImage {

@@ -45,7 +45,7 @@ export default function HubPage() {
 
         {/* Editions */}
         {hubPage.editions.map((edition, i) => (
-          <article key={edition.year}>
+          <article key={edition.year} id={`hub-${edition.year}`}>
             {/* Edition cover / header */}
             {i === 0 ? (
               /* First edition: full-width cover photo with year overlay */

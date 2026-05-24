@@ -1,18 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { galleryImages } from "@/data/content";
 
-// Pattern repeats every 6 photos. Defines [colSpan, rowSpan] on desktop (3-col grid).
-// Mobile is always col-span-1 row-span-1 except the first which is col-span-2.
-const PATTERN: [number, number][] = [
-  [1, 2], // tall
-  [2, 1], // wide
-  [1, 1], // square
-  [1, 1], // square
-  [1, 2], // tall
-  [1, 1], // square
+// Fixed bento layout for 8 photos [colSpan, rowSpan] on desktop (3-col grid):
+// [wide][tall] / [sq][sq][tall] / [tall][wide] / [tall][sq][sq]
+const LAYOUT: [number, number][] = [
+  [2, 1], // 0 wide
+  [1, 2], // 1 tall
+  [1, 1], // 2 sq
+  [1, 1], // 3 sq
+  [1, 2], // 4 tall
+  [2, 1], // 5 wide
+  [1, 1], // 6 sq
+  [1, 1], // 7 sq
 ];
 
 function spanClass(col: number, row: number) {
@@ -46,7 +49,7 @@ export default function Gallery() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
           {galleryImages.map((photo, i) => {
-            const [col, row] = PATTERN[i % PATTERN.length];
+            const [col, row] = LAYOUT[i] ?? [1, 1];
             const mobileClass = i === 0 ? "col-span-2" : "col-span-1";
             const desktopClass = spanClass(col, row);
             const minH = row === 2 ? "360px" : "220px";
@@ -55,30 +58,32 @@ export default function Gallery() {
               <AnimatedSection
                 key={i}
                 delay={i * 0.06}
-                className={`${mobileClass} ${desktopClass} overflow-hidden rounded-2xl group cursor-pointer`}
+                className={`${mobileClass} ${desktopClass} overflow-hidden rounded-2xl group ${photo.href ? "cursor-pointer" : "cursor-default"}`}
               >
-                <div
-                  className="relative w-full h-full overflow-hidden rounded-2xl"
-                  style={{ minHeight: minH }}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.label}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
-                    <span
-                      className="text-white/60 text-xs uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300"
-                      style={{ fontFamily: "var(--font-inter)" }}
-                    >
-                      {photo.label}
-                    </span>
-                    <span className="h-px bg-[#eec416]/0 group-hover:bg-[#eec416]/80 w-0 group-hover:w-6 transition-all duration-500" />
+                <Link href={photo.href ?? "#"} className="block w-full h-full" onClick={!photo.href ? (e) => e.preventDefault() : undefined}>
+                  <div
+                    className="relative w-full h-full overflow-hidden rounded-2xl"
+                    style={{ minHeight: minH }}
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.label}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                      <span
+                        className="text-white/60 text-xs uppercase tracking-[0.2em] group-hover:text-white transition-colors duration-300"
+                        style={{ fontFamily: "var(--font-inter)" }}
+                      >
+                        {photo.label}
+                      </span>
+                      <span className="h-px bg-[#eec416]/0 group-hover:bg-[#eec416]/80 w-0 group-hover:w-6 transition-all duration-500" />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </AnimatedSection>
             );
           })}

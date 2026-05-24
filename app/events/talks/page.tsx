@@ -54,7 +54,7 @@ export default function TalksPage() {
 
         {/* Editions */}
         {talkEditions.map((edition, i) => (
-          <article key={edition.id} className="mb-8 md:mb-12">
+          <article key={edition.id} id={edition.id} className="mb-8 md:mb-12">
             {/* Cover image */}
             <AnimatedSection direction="none">
               <div className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden">
