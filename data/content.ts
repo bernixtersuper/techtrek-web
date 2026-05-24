@@ -115,9 +115,9 @@ export const pastSponsors = [
 ];
 
 export const instagramReels = [
-  { id: "DX-JSKZvpg2", caption: "Entrevistas con emprendedores" },
-  { id: "DYQLF5pPjjs", caption: "Entrevistas con emprendedores" },
-  { id: "DYiRi9jPfSa", caption: "Entrevistas con emprendedores" },
+  { id: "DYiRi9jPfSa", caption: "Entrevistas con emprendedores - Bianca" },
+  { id: "DX-JSKZvpg2", caption: "Entrevistas con emprendedores - Opal" },
+  { id: "DYQLF5pPjjs", caption: "Entrevistas con emprendedores - Rels" },
 ];
 
 export const marqueeKeywords = [
