@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function HubPage() {
   return (
     <>
-      <EventNav />
+      <EventNav eventName="TT Hub" />
       <main className="bg-[#0d0d0d] min-h-screen">
         {/* Page hero */}
         <section className="pt-32 md:pt-40 pb-16 md:pb-20 px-6 md:px-12 max-w-7xl mx-auto">

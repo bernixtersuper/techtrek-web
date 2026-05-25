@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-export default function EventNav() {
+export default function EventNav({ eventName }: { eventName?: string }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -55,8 +55,17 @@ export default function EventNav() {
           </span>
         </Link>
 
-        {/* Spacer to keep logo centered */}
-        <div className="w-24" />
+        {/* Event name / spacer */}
+        <div className="w-24 flex justify-end">
+          {eventName && (
+            <span
+              className="text-[#555] text-xs uppercase tracking-widest hidden sm:block"
+              style={{ fontFamily: "var(--font-inter)" }}
+            >
+              {eventName}
+            </span>
+          )}
+        </div>
       </div>
 
       <motion.div
