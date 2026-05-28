@@ -18,7 +18,7 @@ const footerLinks = [
   { label: "Eventos", href: "#eventos" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Sponsors", href: "#sponsors" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Sumate", href: "#sumate" },
 ];
 
 export default function Footer() {

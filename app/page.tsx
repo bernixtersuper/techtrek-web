@@ -10,7 +10,7 @@ import Showreel from "@/components/sections/Showreel";
 import Interviews from "@/components/sections/Interviews";
 import About from "@/components/sections/About";
 import Sponsors from "@/components/sections/Sponsors";
-import Contact from "@/components/sections/Contact";
+import Newsletter from "@/components/sections/Newsletter";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         <Interviews />
         <About />
         <Sponsors />
-        <Contact />
+        <Newsletter />
       </main>
       <Footer />
     </>
