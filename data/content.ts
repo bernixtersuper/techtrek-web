@@ -11,7 +11,7 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: 300, suffix: "+", label: "Asistentes al Hub 2025" },
+  { value: 350, suffix: "+", label: "Asistentes al Hub 2025" },
   { value: 6, suffix: "", label: "Miembros" },
 ];
 
@@ -21,7 +21,7 @@ export const events = [
     name: "Tech Trek Hub",
     shortName: "Hub",
     description:
-      "Evento principal. Más de 300 estudiantes universitarios de todo el país, empresas líderes y emprendedores en un mismo lugar.",
+      "Evento principal. Más de 350 estudiantes universitarios de todo el país, empresas líderes y emprendedores en un mismo lugar.",
     date: "Agosto 2026",
     location: "Parque de la Innovación, CABA",
     featured: true,
@@ -133,6 +133,7 @@ export const marqueeKeywords = [
   "Tech",
   "Argentina",
   "Comunidad",
+  "Talento"
 ];
 
 // Order matches fixed bento layout in Gallery.tsx:

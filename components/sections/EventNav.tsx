@@ -25,7 +25,7 @@ export default function EventNav({ eventName }: { eventName?: string }) {
           : "bg-gradient-to-b from-[#0d0d0d]/70 to-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
+      <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         {/* Back link */}
         <Link
           href="/#eventos"

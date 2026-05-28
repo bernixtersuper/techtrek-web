@@ -73,7 +73,7 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
                     style={{
                       fontFamily: "var(--font-syne)",
                       fontWeight: 800,
-                      fontSize: "clamp(1.4rem, 3vw, 2.2rem)",
+                      fontSize: "clamp(1.2rem, 2.5vw, 2rem)",
                     }}
                   >
                     {event.name.split(" ")[0]}{" "}
