@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const eventMedia: Record<string, { src: string; alt: string }> = {
   hub: { src: "/images/hub/alumnosenelhub25.JPG", alt: "Tech Trek Hub" },
-  talks: { src: "/images/talks/hernankazah1.jpg", alt: "TT Talks" },
+  talks: { src: "/images/events/talks/jeremy-kraayenbrink/cover.jpg", alt: "TT Talks" },
   biohack: { src: "/images/biohack.png", alt: "BioHackathon" },
   visits: { src: "/images/talks/talk-complif.jpg", alt: "TT Visits" },
 };
