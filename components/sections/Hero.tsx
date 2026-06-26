@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { siteConfig } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Hero() {
+  const { lang, t } = useLanguage();
+  const base = lang === "en" ? "/en" : "";
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0d0d0d] px-6 pt-20">
       {/* Background video */}
@@ -55,13 +59,13 @@ export default function Hero() {
             fontSize: "clamp(2.8rem, 9vw, 7.5rem)",
           }}
         >
-          Donde el{" "}
-          <span className="text-[#eec416]">talento</span>
+          {t.hero.pre1}{" "}
+          <span className="text-[#eec416]">{t.hero.highlight1}</span>
           <br />
-          se encuentra con el{" "}
+          {t.hero.pre2}{" "}
           <br className="hidden md:block" />
           <span className="relative inline-block">
-            futuro
+            {t.hero.highlight2}
             <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-[#eec416] rounded-full" />
           </span>
         </motion.h1>
@@ -74,8 +78,7 @@ export default function Hero() {
           className="text-[#999999] text-lg md:text-xl max-w-xl mx-auto mb-12 leading-relaxed"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          Acercamos el emprendedurismo a los estudiantes universitarios a través del
-          Hub, Talks y BioHackathon.
+          {t.hero.tagline}
         </motion.p>
 
         {/* CTAs */}
@@ -86,22 +89,21 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#eventos"
+            href={`${base}/#eventos`}
             className="btn-gold px-8 py-4 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-105 active:scale-100"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
-            Ver Eventos
+            {t.hero.cta1}
           </a>
           <a
-            href="#sponsors"
+            href={`${base}/#sponsors`}
             className="px-8 py-4 border border-[#333333] text-white rounded-full text-sm uppercase tracking-widest hover:border-[#eec416] hover:text-[#eec416] transition-all duration-200"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
-            Ser Sponsor
+            {t.hero.cta2}
           </a>
         </motion.div>
       </div>
-
     </section>
   );
 }

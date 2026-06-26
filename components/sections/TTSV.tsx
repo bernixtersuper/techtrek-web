@@ -3,10 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { useLanguage } from "@/lib/i18n";
 
 export default function TTSV() {
+  const { lang, t } = useLanguage();
+  const href = lang === "en" ? "/en/events/ttsv" : "/events/ttsv";
+
   return (
-    <Link href="/events/ttsv" className="block group">
+    <Link href={href} className="block group">
       <section
         id="silicon-valley"
         className="relative py-24 md:py-32 px-6 overflow-hidden bg-[#0d0d0d] cursor-pointer"
@@ -35,7 +39,7 @@ export default function TTSV() {
                   className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  Tech Trek Silicon Valley
+                  {t.ttsv.eyebrow}
                 </p>
               </AnimatedSection>
 
@@ -44,9 +48,9 @@ export default function TTSV() {
                   className="text-white uppercase text-4xl md:text-6xl leading-none tracking-tighter"
                   style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
                 >
-                  Un viaje
+                  {t.ttsv.heading1}
                   <br />
-                  <span className="text-[#eec416]">único</span>
+                  <span className="text-[#eec416]">{t.ttsv.heading2}</span>
                 </h2>
               </AnimatedSection>
 
@@ -55,9 +59,7 @@ export default function TTSV() {
                   className="text-[#999999] leading-relaxed max-w-md"
                   style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}
                 >
-                  Dos semanas en Silicon Valley y San Francisco: visitas a
-                  empresas, cenas con ingenieros de la NASA, founders y
-                  emprendedores, y una forma distinta de pensar el mundo.
+                  {t.ttsv.description}
                 </p>
               </AnimatedSection>
 
@@ -68,14 +70,14 @@ export default function TTSV() {
                       className="text-[#eec416] text-xs uppercase tracking-[0.25em]"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
-                      Único en el ITBA
+                      {t.ttsv.badge}
                     </span>
                   </div>
                   <span
                     className="flex items-center gap-2 text-[#eec416] text-xs uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    Ver edición 2025
+                    {t.ttsv.cta}
                     <svg
                       width="12"
                       height="12"

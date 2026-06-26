@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { galleryImages } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 // Fixed bento layout for 8 photos [colSpan, rowSpan] on desktop (3-col grid):
 // [wide][tall] / [sq][sq][tall] / [tall][wide] / [tall][sq][sq]
@@ -25,6 +26,9 @@ function spanClass(col: number, row: number) {
 }
 
 export default function Gallery() {
+  const { lang, t } = useLanguage();
+  const base = lang === "en" ? "/en" : "";
+
   return (
     <section className="py-24 md:py-32 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
@@ -33,7 +37,7 @@ export default function Gallery() {
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Momentos reales
+            {t.gallery.eyebrow}
           </p>
         </AnimatedSection>
         <AnimatedSection delay={0.1} className="mb-12">
@@ -41,9 +45,9 @@ export default function Gallery() {
             className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
-            Así se
+            {t.gallery.heading1}
             <br />
-            <span className="text-[#eec416]">vive</span>
+            <span className="text-[#eec416]">{t.gallery.heading2}</span>
           </h2>
         </AnimatedSection>
 
@@ -53,14 +57,17 @@ export default function Gallery() {
             const mobileClass = i === 0 ? "col-span-2" : "col-span-1";
             const desktopClass = spanClass(col, row);
             const minH = row === 2 ? "360px" : "220px";
+            const href = photo.href
+              ? photo.href.replace("/events/", `${base}/events/`)
+              : undefined;
 
             return (
               <AnimatedSection
                 key={i}
                 delay={i * 0.06}
-                className={`${mobileClass} ${desktopClass} overflow-hidden rounded-2xl group ${photo.href ? "cursor-pointer" : "cursor-default"}`}
+                className={`${mobileClass} ${desktopClass} overflow-hidden rounded-2xl group ${href ? "cursor-pointer" : "cursor-default"}`}
               >
-                <Link href={photo.href ?? "#"} className="block w-full h-full" onClick={!photo.href ? (e) => e.preventDefault() : undefined}>
+                <Link href={href ?? "#"} className="block w-full h-full" onClick={!href ? (e) => e.preventDefault() : undefined}>
                   <div
                     className="relative w-full h-full overflow-hidden rounded-2xl"
                     style={{ minHeight: minH }}

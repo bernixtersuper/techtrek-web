@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { siteConfig } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 const LinkedInIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -14,40 +15,33 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const footerLinks = [
-  { label: "Eventos", href: "#eventos" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Sumate", href: "#sumate" },
-];
-
 export default function Footer() {
+  const { lang, t } = useLanguage();
+  const base = lang === "en" ? "/en" : "";
+
+  const footerLinks = [
+    { label: t.footer.events, href: `${base}/#eventos` },
+    { label: t.footer.about, href: `${base}/#nosotros` },
+    { label: t.footer.sponsors, href: `${base}/#sponsors` },
+    { label: t.footer.join, href: `${base}/#sumate` },
+  ];
+
+  const tagline = lang === "en" ? (siteConfig.taglineEn ?? siteConfig.tagline) : siteConfig.tagline;
+
   return (
     <footer className="bg-[#0a0a0a] border-t border-[#1f1f1f] px-6 py-12">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-10">
           {/* Logo + tagline */}
           <div className="flex flex-col gap-3">
-            <a href="#" className="flex items-center gap-3">
-              <Image
-                src="/logos/techtrek-logo-full.png"
-                alt="Tech Trek"
-                width={36}
-                height={36}
-                className="rounded-full"
-              />
-              <span
-                className="text-white text-lg"
-                style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
-              >
+            <a href={base || "/"} className="flex items-center gap-3">
+              <Image src="/logos/techtrek-logo-full.png" alt="Tech Trek" width={36} height={36} className="rounded-full" />
+              <span className="text-white text-lg" style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}>
                 Tech Trek
               </span>
             </a>
-            <p
-              className="text-[#555] text-sm max-w-xs leading-relaxed"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              {siteConfig.tagline}
+            <p className="text-[#555] text-sm max-w-xs leading-relaxed" style={{ fontFamily: "var(--font-inter)" }}>
+              {tagline}
             </p>
           </div>
 
@@ -68,30 +62,14 @@ export default function Footer() {
           {/* Socials + email */}
           <div className="flex flex-col items-start md:items-end gap-3">
             <div className="flex items-center gap-3">
-              <a
-                href={siteConfig.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#555] hover:text-[#eec416] transition-colors duration-200"
-                aria-label="LinkedIn"
-              >
+              <a href={siteConfig.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-[#eec416] transition-colors duration-200" aria-label="LinkedIn">
                 <LinkedInIcon />
               </a>
-              <a
-                href={siteConfig.socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#555] hover:text-[#eec416] transition-colors duration-200"
-                aria-label="Instagram"
-              >
+              <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-[#eec416] transition-colors duration-200" aria-label="Instagram">
                 <InstagramIcon />
               </a>
             </div>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-sm text-[#555] hover:text-[#eec416] transition-colors duration-200"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
+            <a href={`mailto:${siteConfig.email}`} className="text-sm text-[#555] hover:text-[#eec416] transition-colors duration-200" style={{ fontFamily: "var(--font-inter)" }}>
               {siteConfig.email}
             </a>
           </div>
@@ -99,10 +77,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-[#1f1f1f] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p
-            className="text-[#444] text-xs"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
+          <p className="text-[#444] text-xs" style={{ fontFamily: "var(--font-inter)" }}>
             &copy; {new Date().getFullYear()} Tech Trek — {siteConfig.institution}
           </p>
           <a
@@ -111,18 +86,9 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-[#eec416] transition-colors duration-200 group"
           >
-            <Image
-              src="/logos/itba-logo.png"
-              alt="ITBA"
-              width={28}
-              height={28}
-              className="opacity-40 group-hover:opacity-100 transition-opacity duration-200"
-            />
-            <span
-              className="text-[#444] text-xs group-hover:text-[#eec416] transition-colors duration-200"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              Una iniciativa del ITBA
+            <Image src="/logos/itba-logo.png" alt="ITBA" width={28} height={28} className="opacity-40 group-hover:opacity-100 transition-opacity duration-200" />
+            <span className="text-[#444] text-xs group-hover:text-[#eec416] transition-colors duration-200" style={{ fontFamily: "var(--font-inter)" }}>
+              {t.footer.initiative}
             </span>
           </a>
         </div>

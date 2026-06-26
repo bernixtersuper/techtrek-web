@@ -1,7 +1,12 @@
+"use client";
+
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { instagramReels, siteConfig } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Interviews() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 md:py-32 px-6 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +15,7 @@ export default function Interviews() {
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            TT Entrevistas
+            {t.interviews.eyebrow}
           </p>
         </AnimatedSection>
 
@@ -20,11 +25,11 @@ export default function Interviews() {
               className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
               style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
             >
-              Founders
+              {t.interviews.heading1}
               <br />
-              <span className="text-[#eec416]">en primera</span>
+              <span className="text-[#eec416]">{t.interviews.heading2}</span>
               <br />
-              persona
+              {t.interviews.heading3}
             </h2>
           </AnimatedSection>
 
@@ -33,8 +38,7 @@ export default function Interviews() {
               className="text-[#999999] leading-relaxed mb-6"
               style={{ fontFamily: "var(--font-inter)" }}
             >
-              Hablamos con emprendedores argentinos que están construyendo algo
-              real. Sin filtro, sin guión.
+              {t.interviews.description}
             </p>
             <a
               href={siteConfig.socials.instagram}
@@ -43,7 +47,7 @@ export default function Interviews() {
               className="inline-flex items-center gap-2 text-sm text-[#eec416] hover:text-white transition-colors duration-200 uppercase tracking-widest"
               style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
             >
-              Ver todas en Instagram →
+              {t.interviews.cta}
             </a>
           </AnimatedSection>
         </div>

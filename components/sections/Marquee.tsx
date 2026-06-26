@@ -1,18 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { marqueeKeywords } from "@/data/content";
+import { marqueeKeywords, marqueeKeywordsEn } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 function MarqueeRow({
+  keywords,
   direction = "left",
   offset = 0,
   duration = 25,
 }: {
+  keywords: string[];
   direction?: "left" | "right";
   offset?: number;
   duration?: number;
 }) {
-  const track = [...marqueeKeywords, ...marqueeKeywords, ...marqueeKeywords];
+  const track = [...keywords, ...keywords, ...keywords];
   const animate =
     direction === "left"
       ? { x: ["0%", "-33.333%"] }
@@ -44,10 +47,13 @@ function MarqueeRow({
 }
 
 export default function Marquee() {
+  const { lang } = useLanguage();
+  const keywords = lang === "en" ? marqueeKeywordsEn : marqueeKeywords;
+
   return (
     <section className="py-12 border-y border-[#1f1f1f] overflow-hidden bg-[#0d0d0d]">
-      <MarqueeRow direction="left"  offset={0} duration={25} />
-      <MarqueeRow direction="right" offset={1} duration={32} />
+      <MarqueeRow keywords={keywords} direction="left"  offset={0} duration={25} />
+      <MarqueeRow keywords={keywords} direction="right" offset={1} duration={32} />
     </section>
   );
 }

@@ -4,9 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 export default function EventNav({ eventName }: { eventName?: string }) {
   const [scrolled, setScrolled] = useState(false);
+  const { lang, t } = useLanguage();
+  const homeHref = lang === "en" ? "/en/#eventos" : "/#eventos";
+  const logoHref = lang === "en" ? "/en" : "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -28,29 +32,20 @@ export default function EventNav({ eventName }: { eventName?: string }) {
       <div className="max-w-6xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         {/* Back link */}
         <Link
-          href="/#eventos"
+          href={homeHref}
           className="flex items-center gap-2 text-[#777] hover:text-[#eec416] transition-colors duration-200 text-sm uppercase tracking-wider"
           style={{ fontFamily: "var(--font-inter)" }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5" /><path d="M12 5l-7 7 7 7" />
           </svg>
-          Inicio
+          {t.eventNav.back}
         </Link>
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/logos/techtrek-logo-full.png"
-            alt="Tech Trek"
-            width={36}
-            height={36}
-            className="rounded-full"
-          />
-          <span
-            className="text-white text-base tracking-tight hidden sm:block"
-            style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
-          >
+        <Link href={logoHref} className="flex items-center gap-3">
+          <Image src="/logos/techtrek-logo-full.png" alt="Tech Trek" width={36} height={36} className="rounded-full" />
+          <span className="text-white text-base tracking-tight hidden sm:block" style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}>
             Tech Trek
           </span>
         </Link>
@@ -58,10 +53,7 @@ export default function EventNav({ eventName }: { eventName?: string }) {
         {/* Event name / spacer */}
         <div className="w-24 flex justify-end">
           {eventName && (
-            <span
-              className="text-[#555] text-xs uppercase tracking-widest hidden sm:block"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
+            <span className="text-[#555] text-xs uppercase tracking-widest hidden sm:block" style={{ fontFamily: "var(--font-inter)" }}>
               {eventName}
             </span>
           )}

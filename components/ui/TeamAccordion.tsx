@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { TeamMember } from "@/data/content";
+import { useLanguage } from "@/lib/i18n";
 
 interface TeamAccordionProps {
   year: string;
@@ -11,6 +12,7 @@ interface TeamAccordionProps {
 
 export default function TeamAccordion({ year, team }: TeamAccordionProps) {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <div className="border-t border-[#1f1f1f] pt-8 pb-6">
@@ -22,7 +24,7 @@ export default function TeamAccordion({ year, team }: TeamAccordionProps) {
           className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          Equipo {year}
+          {t.teamAccordion.team} {year}
         </p>
         <motion.svg
           animate={{ rotate: open ? 180 : 0 }}
@@ -52,26 +54,14 @@ export default function TeamAccordion({ year, team }: TeamAccordionProps) {
           >
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 pt-6">
               {team.map((member) => (
-                <div
-                  key={member.email}
-                  className="border border-[#1f1f1f] rounded-xl p-4"
-                >
-                  <p
-                    className="text-white text-sm mb-1"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
+                <div key={member.email} className="border border-[#1f1f1f] rounded-xl p-4">
+                  <p className="text-white text-sm mb-1" style={{ fontFamily: "var(--font-inter)" }}>
                     {member.name}
                   </p>
-                  <p
-                    className="text-[#eec416] text-[10px] uppercase tracking-[0.2em] mb-2"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
+                  <p className="text-[#eec416] text-[10px] uppercase tracking-[0.2em] mb-2" style={{ fontFamily: "var(--font-inter)" }}>
                     {member.role}
                   </p>
-                  <p
-                    className="text-[#555] text-xs"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
+                  <p className="text-[#555] text-xs" style={{ fontFamily: "var(--font-inter)" }}>
                     {member.email}
                   </p>
                 </div>

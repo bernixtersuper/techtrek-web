@@ -2,18 +2,23 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-
-const links = [
-  { label: "Eventos", href: "#eventos" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Sumate", href: "#sumate" },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, t } = useLanguage();
+
+  const base = lang === "en" ? "/en" : "";
+
+  const links = [
+    { label: t.nav.events, href: `${base}/#eventos` },
+    { label: t.nav.about, href: `${base}/#nosotros` },
+    { label: t.nav.sponsors, href: `${base}/#sponsors` },
+    { label: t.nav.join, href: `${base}/#sumate` },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -34,7 +39,7 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href={base || "/"} className="flex items-center gap-3 group">
           <Image
             src="/logos/techtrek-logo-full.png"
             alt="Tech Trek"
@@ -63,12 +68,32 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#sponsors"
+            href={`${base}/#sponsors`}
             className="btn-gold px-5 py-2 bg-[#eec416] text-[#0d0d0d] text-sm font-700 rounded-full hover:bg-[#f5d038] transition-all duration-200 tracking-wide uppercase"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
-            Ser Sponsor
+            {t.nav.beASponsor}
           </a>
+
+          {/* Language toggle */}
+          <div
+            className="flex items-center gap-1 text-xs uppercase tracking-widest"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
+            <Link
+              href="/"
+              className={`transition-colors duration-200 ${lang === "es" ? "text-white" : "text-[#555] hover:text-[#999]"}`}
+            >
+              ES
+            </Link>
+            <span className="text-[#333]">/</span>
+            <Link
+              href="/en"
+              className={`transition-colors duration-200 ${lang === "en" ? "text-white" : "text-[#555] hover:text-[#999]"}`}
+            >
+              EN
+            </Link>
+          </div>
         </div>
 
         {/* Mobile hamburger */}
@@ -92,7 +117,7 @@ export default function Nav() {
       {/* Animated bottom border */}
       <motion.div
         className="absolute bottom-0 left-0 h-px bg-[#eec416]"
-        animate={{ width: scrolled ? "100%" : "0%" , opacity: scrolled ? 0.35 : 0 }}
+        animate={{ width: scrolled ? "100%" : "0%", opacity: scrolled ? 0.35 : 0 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
       />
 
@@ -116,13 +141,34 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="#sponsors"
+            href={`${base}/#sponsors`}
             onClick={() => setMenuOpen(false)}
             className="btn-gold inline-block w-fit px-6 py-3 bg-[#eec416] text-[#0d0d0d] font-700 rounded-full uppercase tracking-wide"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
           >
-            Ser Sponsor
+            {t.nav.beASponsor}
           </a>
+          {/* Language toggle mobile */}
+          <div
+            className="flex items-center gap-2 text-xs uppercase tracking-widest"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className={`transition-colors duration-200 ${lang === "es" ? "text-white" : "text-[#555]"}`}
+            >
+              ES
+            </Link>
+            <span className="text-[#333]">/</span>
+            <Link
+              href="/en"
+              onClick={() => setMenuOpen(false)}
+              className={`transition-colors duration-200 ${lang === "en" ? "text-white" : "text-[#555]"}`}
+            >
+              EN
+            </Link>
+          </div>
         </motion.div>
       )}
     </motion.nav>

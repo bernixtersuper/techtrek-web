@@ -5,6 +5,7 @@ import Link from "next/link";
 import { events } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/i18n";
 
 const eventMedia: Record<string, { src: string; alt: string }> = {
   hub: { src: "/images/hub/alumnosenelhub25.JPG", alt: "Tech Trek Hub" },
@@ -20,13 +21,16 @@ const eventNumbers: Record<string, string> = {
   biohack: "04",
 };
 
-const eventLinks: Record<string, string> = {
-  hub: "/events/hub",
-  visits: "/events/visits",
-  talks: "/events/talks",
-};
-
 export default function Events() {
+  const { lang, t } = useLanguage();
+  const base = lang === "en" ? "/en" : "";
+
+  const eventLinks: Record<string, string> = {
+    hub: `${base}/events/hub`,
+    visits: `${base}/events/visits`,
+    talks: `${base}/events/talks`,
+  };
+
   return (
     <section id="eventos" className="py-24 md:py-32 px-6 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto">
@@ -36,7 +40,7 @@ export default function Events() {
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Lo que hacemos
+            {t.events.eyebrow}
           </p>
         </AnimatedSection>
         <AnimatedSection delay={0.1} className="mb-16">
@@ -44,9 +48,9 @@ export default function Events() {
             className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
-            Nuestros
+            {t.events.heading1}
             <br />
-            <span className="text-[#eec416]">Eventos</span>
+            <span className="text-[#eec416]">{t.events.heading2}</span>
           </h2>
         </AnimatedSection>
 
@@ -56,6 +60,9 @@ export default function Events() {
             const media = eventMedia[event.id];
             const num = eventNumbers[event.id];
             const href = eventLinks[event.id];
+            const tag = lang === "en" ? (event.tagEn ?? event.tag) : event.tag;
+            const description = lang === "en" ? (event.descriptionEn ?? event.description) : event.description;
+            const date = lang === "en" ? (event.dateEn ?? event.date) : event.date;
 
             const card = (
               <motion.div
@@ -64,10 +71,8 @@ export default function Events() {
                 style={{ borderColor: "rgba(31,31,31,1)" }}
                 className={`relative border rounded-2xl overflow-hidden flex flex-col md:flex-row group ${href ? "cursor-pointer" : "cursor-default"} min-h-[280px]`}
               >
-                {/* Yellow tint overlay on hover */}
                 <div className="absolute inset-0 bg-[#eec416]/0 group-hover:bg-[#eec416]/[0.04] transition-colors duration-300 pointer-events-none z-30" />
 
-                {/* Photo — left side on desktop */}
                 <div className="relative w-full md:w-[45%] min-h-[200px] md:min-h-0 shrink-0">
                   <Image
                     src={media.src}
@@ -80,15 +85,13 @@ export default function Events() {
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0f0f0f] md:hidden" />
                 </div>
 
-                {/* Content — right side */}
                 <div className="relative z-10 flex flex-col justify-between p-8 md:p-10 bg-[#0f0f0f] flex-1">
-                  {/* Top row */}
                   <div className="flex items-start justify-between mb-6">
                     <span
                       className="text-[10px] uppercase tracking-[0.25em] bg-[#eec416] text-[#0d0d0d] rounded-full px-3 py-1 font-semibold"
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
-                      {event.tag}
+                      {tag}
                     </span>
                     <span
                       className="text-[#eec416]/15 select-none leading-none"
@@ -98,7 +101,6 @@ export default function Events() {
                     </span>
                   </div>
 
-                  {/* Name + description */}
                   <div className="flex-1">
                     <h3
                       className="text-white uppercase leading-none tracking-tight mb-4 text-2xl md:text-4xl"
@@ -110,18 +112,17 @@ export default function Events() {
                       className="text-[#999999] leading-relaxed max-w-md"
                       style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}
                     >
-                      {event.description}
+                      {description}
                     </p>
                   </div>
 
-                  {/* Meta */}
                   <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#1f1f1f]">
                     <div className="flex items-center gap-4">
                       <span
                         className="text-xs text-[#555] uppercase tracking-wider"
                         style={{ fontFamily: "var(--font-inter)" }}
                       >
-                        {event.date}
+                        {date}
                       </span>
                       <span className="text-[#333] text-xs">·</span>
                       <span
@@ -136,7 +137,7 @@ export default function Events() {
                         className="flex items-center gap-1.5 text-[#eec416] text-xs uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{ fontFamily: "var(--font-inter)" }}
                       >
-                        Ver ediciones
+                        {t.events.cta}
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                         </svg>

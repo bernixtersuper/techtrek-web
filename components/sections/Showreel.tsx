@@ -1,8 +1,11 @@
 "use client";
 
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Showreel() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 md:py-32 px-6 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
@@ -11,7 +14,7 @@ export default function Showreel() {
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Hub 2025
+            {t.showreel.eyebrow}
           </p>
         </AnimatedSection>
 
@@ -20,8 +23,8 @@ export default function Showreel() {
             className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
-            Voces del{" "}
-            <span className="text-[#eec416]">ecosistema</span>
+            {t.showreel.heading1}{" "}
+            <span className="text-[#eec416]">{t.showreel.heading2}</span>
           </h2>
         </AnimatedSection>
 
@@ -40,7 +43,7 @@ export default function Showreel() {
             className="text-[#555] text-xs mt-4 text-center"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Entrevistas a founders, inversores y builders — Tech Trek Hub 2025
+            {t.showreel.caption}
           </p>
         </AnimatedSection>
       </div>

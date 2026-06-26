@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { useLanguage } from "@/lib/i18n";
 
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbycqvO9v3d_TVOhl4Sl3h4OGFcgBd6o7OWvSMv0DC68zUeg180QRNQ81MoQBrupfsv0/exec";
 
@@ -36,6 +37,8 @@ export default function Newsletter() {
   const [notas, setNotas] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [btnHovered, setBtnHovered] = useState(false);
+  const { lang, t } = useLanguage();
+  const nt = t.newsletter;
 
   function handleTypeSwitch(type: UserType) {
     setUserType(type);
@@ -55,20 +58,30 @@ export default function Newsletter() {
           nombre: name.trim(),
           email: email.trim(),
           notas: notas.trim(),
-          ...(userType === "empresa" && {
-            empresa: empresa.trim(),
-          }),
+          ...(userType === "empresa" && { empresa: empresa.trim() }),
         }),
       });
       setStatus("success");
-      setName("");
-      setEmail("");
-      setEmpresa("");
-      setNotas("");
+      setName(""); setEmail(""); setEmpresa(""); setNotas("");
     } catch {
       setStatus("error");
     }
   }
+
+  const headingNode =
+    lang === "en" ? (
+      userType === "estudiante" ? (
+        <>Stay<br />in the <span className="text-[#eec416]">loop.</span></>
+      ) : (
+        <>Let&apos;s work<br /><span className="text-[#eec416]">together.</span></>
+      )
+    ) : (
+      userType === "estudiante" ? (
+        <>Enterate<br />de <span className="text-[#eec416]">todo.</span></>
+      ) : (
+        <>Trabajemos<br /><span className="text-[#eec416]">juntos.</span></>
+      )
+    );
 
   return (
     <section id="sumate" className="py-24 md:py-32 px-6 border-t border-[#1f1f1f] bg-[#0d0d0d]">
@@ -78,7 +91,7 @@ export default function Newsletter() {
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Comunidad
+            {nt.eyebrow}
           </p>
         </AnimatedSection>
 
@@ -96,11 +109,7 @@ export default function Newsletter() {
                   className="text-white uppercase text-4xl md:text-5xl leading-none tracking-tighter"
                   style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
                 >
-                  {userType === "estudiante" ? (
-                    <>Enterate<br />de <span className="text-[#eec416]">todo.</span></>
-                  ) : (
-                    <>Trabajemos<br /><span className="text-[#eec416]">juntos.</span></>
-                  )}
+                  {headingNode}
                 </motion.h2>
               </AnimatePresence>
             </AnimatedSection>
@@ -115,9 +124,7 @@ export default function Newsletter() {
                   className="text-[#999999] text-base leading-relaxed"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  {userType === "estudiante"
-                    ? "Hub, Talks, Visits y más. Todo en tu mail. Antes que nadie."
-                    : "Dejanos tu contacto y nuestro equipo se comunica con ustedes para encontrar la mejor forma de trabajar juntos."}
+                  {userType === "estudiante" ? nt.descStudent : nt.descCompany}
                 </motion.p>
               </AnimatePresence>
             </AnimatedSection>
@@ -126,8 +133,6 @@ export default function Newsletter() {
           {/* Right — form */}
           <AnimatedSection delay={0.25} direction="left" className="lg:flex-1 lg:max-w-lg w-full">
             <div className="relative mt-16 lg:mt-0">
-
-              {/* Mail icon — sits behind the card, peeks from above on button hover */}
               <div
                 className={`absolute top-0 left-1/2 -translate-x-1/2 z-0 text-[#eec416] pointer-events-none transition-all duration-500 ease-out ${
                   btnHovered ? "-translate-y-20 opacity-30" : "-translate-y-14 opacity-[0.18]"
@@ -138,27 +143,14 @@ export default function Newsletter() {
 
               {status === "success" ? (
                 <div className="relative z-10 border border-[#1f1f1f] rounded-2xl p-8 bg-[#0f0f0f] text-center">
-                  <p
-                    className="text-[#eec416] text-sm uppercase tracking-[0.2em] mb-2"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
-                    Listo
+                  <p className="text-[#eec416] text-sm uppercase tracking-[0.2em] mb-2" style={{ fontFamily: "var(--font-inter)" }}>
+                    {nt.successLabel}
                   </p>
-                  <p
-                    className="text-white text-lg"
-                    style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
-                  >
-                    {userType === "empresa"
-                      ? "Gracias por el interés."
-                      : "Ya estás en la lista."}
+                  <p className="text-white text-lg" style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}>
+                    {userType === "empresa" ? nt.successCompanyTitle : nt.successStudentTitle}
                   </p>
-                  <p
-                    className="text-[#555] text-sm mt-2"
-                    style={{ fontFamily: "var(--font-inter)" }}
-                  >
-                    {userType === "empresa"
-                      ? "Nuestro equipo se va a contactar con ustedes."
-                      : "Te avisamos cuando haya novedades."}
+                  <p className="text-[#555] text-sm mt-2" style={{ fontFamily: "var(--font-inter)" }}>
+                    {userType === "empresa" ? nt.successCompanySub : nt.successStudentSub}
                   </p>
                 </div>
               ) : (
@@ -187,7 +179,7 @@ export default function Newsletter() {
                           color: userType === type ? "#0d0d0d" : "#555",
                         }}
                       >
-                        {type === "estudiante" ? "Estudiante" : "Empresa"}
+                        {type === "estudiante" ? nt.tabStudent : nt.tabCompany}
                       </button>
                     ))}
                   </div>
@@ -195,13 +187,13 @@ export default function Newsletter() {
                   {/* Name */}
                   <div className="flex flex-col gap-1">
                     <label htmlFor="nl-name" className={labelClass} style={{ fontFamily: "var(--font-inter)" }}>
-                      Nombre
+                      {nt.labelName}
                     </label>
                     <input
                       id="nl-name"
                       type="text"
                       required
-                      placeholder="Tu nombre"
+                      placeholder={nt.placeholderName}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className={inputClass}
@@ -212,13 +204,13 @@ export default function Newsletter() {
                   {/* Email */}
                   <div className="flex flex-col gap-1">
                     <label htmlFor="nl-email" className={labelClass} style={{ fontFamily: "var(--font-inter)" }}>
-                      Email
+                      {nt.labelEmail}
                     </label>
                     <input
                       id="nl-email"
                       type="email"
                       required
-                      placeholder="tu@mail.com"
+                      placeholder={nt.placeholderEmail}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className={inputClass}
@@ -226,7 +218,7 @@ export default function Newsletter() {
                     />
                   </div>
 
-                  {/* Empresa-only field — animate in/out */}
+                  {/* Empresa-only field */}
                   <AnimatePresence initial={false}>
                     {userType === "empresa" && (
                       <motion.div
@@ -239,13 +231,13 @@ export default function Newsletter() {
                       >
                         <div className="flex flex-col gap-1">
                           <label htmlFor="nl-empresa" className={labelClass} style={{ fontFamily: "var(--font-inter)" }}>
-                            Empresa
+                            {nt.labelCompany}
                           </label>
                           <input
                             id="nl-empresa"
                             type="text"
                             required
-                            placeholder="Nombre de la empresa"
+                            placeholder={nt.placeholderCompany}
                             value={empresa}
                             onChange={(e) => setEmpresa(e.target.value)}
                             className={inputClass}
@@ -256,20 +248,16 @@ export default function Newsletter() {
                     )}
                   </AnimatePresence>
 
-                  {/* Notes — both types */}
+                  {/* Notes */}
                   <div className="flex flex-col gap-1">
                     <label htmlFor="nl-notas" className={labelClass} style={{ fontFamily: "var(--font-inter)" }}>
-                      Notas{" "}
-                      <span className="normal-case tracking-normal text-[#333]">(opcional)</span>
+                      {nt.labelNotes}{" "}
+                      <span className="normal-case tracking-normal text-[#333]">{nt.optional}</span>
                     </label>
                     <textarea
                       id="nl-notas"
                       rows={3}
-                      placeholder={
-                        userType === "empresa"
-                          ? "¿En qué están interesados? ¿Tienen alguna consulta?"
-                          : "¿Qué estudiás? ¿Qué evento te interesa más?"
-                      }
+                      placeholder={userType === "empresa" ? nt.placeholderNotesCompany : nt.placeholderNotesStudent}
                       value={notas}
                       onChange={(e) => setNotas(e.target.value)}
                       className={`${inputClass} resize-none`}
@@ -279,7 +267,7 @@ export default function Newsletter() {
 
                   {status === "error" && (
                     <p className="text-red-400 text-xs" style={{ fontFamily: "var(--font-inter)" }}>
-                      Algo falló. Revisá tu conexión e intentá de nuevo.
+                      {nt.error}
                     </p>
                   )}
 
@@ -291,7 +279,11 @@ export default function Newsletter() {
                     className="btn-gold mt-2 w-full py-3.5 bg-[#eec416] text-[#0d0d0d] rounded-full text-sm uppercase tracking-widest hover:bg-[#f5d038] transition-all duration-200 hover:scale-[1.02] active:scale-100 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     style={{ fontFamily: "var(--font-syne)", fontWeight: 700 }}
                   >
-                    {status === "loading" ? "Enviando..." : userType === "estudiante" ? <>Anotarme <span>→</span></> : <>Enviar <span>→</span></>}
+                    {status === "loading"
+                      ? nt.loading
+                      : userType === "estudiante"
+                      ? <>{nt.submitStudent} <span>→</span></>
+                      : <>{nt.submitCompany} <span>→</span></>}
                   </button>
                 </form>
               )}

@@ -1,18 +1,22 @@
+"use client";
+
 import { pastSponsors } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import SponsorMarquee from "@/components/ui/SponsorMarquee";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Sponsors() {
+  const { t } = useLanguage();
+
   return (
     <section id="sponsors" className="py-24 md:py-32 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <AnimatedSection className="mb-4">
           <p
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Sponsors
+            {t.sponsors.eyebrow}
           </p>
         </AnimatedSection>
 
@@ -21,9 +25,9 @@ export default function Sponsors() {
             className="text-white uppercase text-4xl md:text-7xl leading-none tracking-tighter"
             style={{ fontFamily: "var(--font-syne)", fontWeight: 600 }}
           >
-            Sé parte
+            {t.sponsors.heading1}
             <br />
-            <span className="text-[#eec416]">del cambio</span>
+            <span className="text-[#eec416]">{t.sponsors.heading2}</span>
           </h2>
         </AnimatedSection>
       </div>
@@ -34,7 +38,7 @@ export default function Sponsors() {
           className="text-[#333] text-xs uppercase tracking-[0.3em] mb-8 px-6 max-w-7xl mx-auto"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          Confiaron en nosotros
+          {t.sponsors.trusted}
         </p>
         <SponsorMarquee sponsors={pastSponsors} />
       </AnimatedSection>
@@ -46,13 +50,13 @@ export default function Sponsors() {
             className="text-[#999999] text-lg mb-3"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            ¿Querés sumarte?
+            {t.sponsors.cta}
           </p>
           <p
             className="text-[#555] mb-8 max-w-md mx-auto"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Escribinos y te contamos todas las formas de colaborar con nosotros.
+            {t.sponsors.ctaDesc}
           </p>
           <a
             href="mailto:techtrek@itba.edu.ar?subject=Consulta%20de%20Sponsorship"

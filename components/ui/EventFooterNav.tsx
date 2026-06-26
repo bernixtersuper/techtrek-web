@@ -4,32 +4,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { useLanguage } from "@/lib/i18n";
 
 const allEvents = [
-  {
-    href: "/events/hub",
-    name: "TT Hub",
-    shortName: "Hub",
-    tag: "Evento Principal",
-  },
-  {
-    href: "/events/visits",
-    name: "TT Visits",
-    shortName: "Visits",
-    tag: "Visitas a Empresas",
-  },
-  {
-    href: "/events/talks",
-    name: "TT Talks",
-    shortName: "Talks",
-    tag: "Serie de Charlas",
-  },
-  {
-    href: "/events/ttsv",
-    name: "TT SV",
-    shortName: "TTSV",
-    tag: "Viaje a Silicon Valley",
-  },
+  { id: "hub",    name: "TT Hub",    tag: "Evento Principal",    tagEn: "Main Event" },
+  { id: "visits", name: "TT Visits", tag: "Visitas a Empresas",  tagEn: "Company Visits" },
+  { id: "talks",  name: "TT Talks",  tag: "Serie de Charlas",    tagEn: "Talk Series" },
+  { id: "ttsv",   name: "TT SV",     tag: "Viaje a Silicon Valley", tagEn: "Silicon Valley Trip" },
 ];
 
 interface EventFooterNavProps {
@@ -37,7 +18,11 @@ interface EventFooterNavProps {
 }
 
 export default function EventFooterNav({ current }: EventFooterNavProps) {
-  const others = allEvents.filter((e) => e.shortName.toLowerCase() !== current);
+  const { lang, t } = useLanguage();
+  const base = lang === "en" ? "/en" : "";
+  const homeHref = lang === "en" ? "/en" : "/";
+
+  const others = allEvents.filter((e) => e.id !== current);
 
   return (
     <section className="max-w-7xl mx-auto px-6 md:px-12 mb-24">
@@ -47,14 +32,14 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
           className="text-[#eec416] text-xs uppercase tracking-[0.3em] mb-8"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          Seguir explorando
+          {t.eventFooterNav.explore}
         </p>
       </AnimatedSection>
 
       <div className={`grid gap-3 ${others.length >= 3 ? "grid-cols-1 md:grid-cols-3" : others.length === 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1 max-w-md"}`}>
         {others.map((event, i) => (
-          <AnimatedSection key={event.href} delay={i * 0.1} className="h-full">
-            <Link href={event.href} className="block h-full">
+          <AnimatedSection key={event.id} delay={i * 0.1} className="h-full">
+            <Link href={`${base}/events/${event.id}`} className="block h-full">
               <motion.div
                 whileHover={{ y: -3, borderColor: "rgba(238,196,22,0.4)" }}
                 transition={{ duration: 0.25 }}
@@ -66,7 +51,7 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
                     className="text-[#eec416] text-[10px] uppercase tracking-[0.25em] mb-3"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
-                    {event.tag}
+                    {lang === "en" ? event.tagEn : event.tag}
                   </p>
                   <h3
                     className="text-white uppercase leading-none tracking-tighter"
@@ -105,7 +90,7 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
       <AnimatedSection delay={0.2}>
         <div className="flex justify-center mt-12">
           <Link
-            href="/"
+            href={homeHref}
             className="flex flex-col items-center gap-3 group text-[#444] hover:text-[#eec416] transition-colors duration-300"
           >
             <Image
@@ -119,7 +104,7 @@ export default function EventFooterNav({ current }: EventFooterNavProps) {
               className="text-xs uppercase tracking-[0.3em]"
               style={{ fontFamily: "var(--font-inter)" }}
             >
-              Volver a inicio
+              {t.eventFooterNav.backHome}
             </span>
           </Link>
         </div>

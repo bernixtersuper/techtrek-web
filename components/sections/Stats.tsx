@@ -4,6 +4,7 @@ import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { stats } from "@/data/content";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { useLanguage } from "@/lib/i18n";
 
 function CountUp({
   target,
@@ -43,17 +44,17 @@ function CountUp({
 export default function Stats() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const { lang, t } = useLanguage();
 
   return (
     <section ref={ref} className="py-24 md:py-32 px-6 bg-[#0d0d0d]">
       <div className="max-w-7xl mx-auto">
-        {/* Section label */}
         <AnimatedSection className="mb-16 text-center">
           <p
             className="text-[#eec416] text-xs uppercase tracking-[0.3em]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            Números que hablan
+            {t.stats.eyebrow}
           </p>
         </AnimatedSection>
 
@@ -75,7 +76,7 @@ export default function Stats() {
                 className="text-[#999999] text-sm leading-snug"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
-                {stat.label}
+                {lang === "en" ? stat.labelEn ?? stat.label : stat.label}
               </p>
             </AnimatedSection>
           ))}
