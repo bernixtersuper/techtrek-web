@@ -146,7 +146,7 @@ export const galleryImages = [
   { src: "/images/hub/Edusolohub25.JPG",                    label: "Hub 2025",      href: "/events/hub#hub-2025" },      // 6 sq
   { src: "/images/talks/talk-complif.jpg",                  label: "Complif",       href: "/events/visits#complif" },    // 5 wide
   { src: "/images/talks/hernankazah2.jpg",                  label: "Hernán Kazah",  href: "/events/talks#hernan-kazah" },// 4 tall
-  { src: "/images/talks/talk-nico-varrone.jpg",             label: "Nico Varrone",  href: "/events/talks#nico-varrone" },// 7 sq
+  { src: "/images/events/talks/jeremy-kraayenbrink/selfie-jeremy.jpg", label: "Jeremy Kraayenbrink", href: "/events/talks#jeremy-kraayenbrink" },// 7 sq
 ];
 
 export interface EventImage {
@@ -329,6 +329,23 @@ export const ttsvEditions: TTSVEdition[] = [
 
 // Ordered most recent first
 export const talkEditions: TalkEdition[] = [
+  {
+    id: "jeremy-kraayenbrink",
+    speaker: "Jeremy Kraayenbrink",
+    speakerRole: "Fundador de Un Mate",
+    date: "25 de junio, 2026",
+    dateSort: "2026-06-25",
+    location: "ITBA, CABA",
+    description:
+      "Un Mate no empezó vendiéndole a individuos: empezó exportando en volumen a embajadas y organismos internacionales. Jeremy Kraayenbrink construyó la marca al revés: primero el mundo, después Argentina. Habló de innovar en un rubro tradicional, de ver las copias como validación y no como robo, de delegar sin perder el alma del negocio, y de aplicar la mentalidad del atleta al emprendimiento. Su motor: del porqué al qué, del qué al cómo.",
+    coverImage: "/images/events/talks/jeremy-kraayenbrink/cover.jpg",
+    images: [
+      { src: "/images/events/talks/jeremy-kraayenbrink/jeremy-tommy-hablando.jpg", alt: "Jeremy Kraayenbrink y Tommy en la charla" },
+      { src: "/images/events/talks/jeremy-kraayenbrink/jeremy-tommy.jpg",          alt: "Jeremy Kraayenbrink con Tommy Varas" },
+      { src: "/images/events/talks/jeremy-kraayenbrink/selfie-jeremy.jpg",         alt: "Selfie con Jeremy Kraayenbrink" },
+      { src: "/images/events/talks/jeremy-kraayenbrink/audiencia-2.jpg",           alt: "Audiencia en la Talk de Jeremy" },
+    ],
+  },
   {
     id: "hernan-kazah",
     speaker: "Hernán Kazah",
